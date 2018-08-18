@@ -183,7 +183,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/markDownd-数学公式/">markDownd 数学公式</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/markDownd-数学公式/">markDownd 数学公式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/区块链/">区块链</a></li></ul>
                     </div>
                 </section>
                 
@@ -259,6 +259,102 @@
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-白话区块链" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/08/18/白话区块链/" class="article-date">
+      <time datetime="2018-08-18T03:30:43.000Z" itemprop="datePublished">2018-08-18</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/18/白话区块链/">《白话区块链》笔记</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="第1章-初识区块链"><a href="#第1章-初识区块链" class="headerlink" title="第1章 初识区块链"></a>第1章 初识区块链</h2><h3 id="例说区块链"><a href="#例说区块链" class="headerlink" title="例说区块链"></a>例说区块链</h3><h5 id="1-从一本账本说起，账本记账权的演进"><a href="#1-从一本账本说起，账本记账权的演进" class="headerlink" title="1. 从一本账本说起，账本记账权的演进"></a>1. 从一本账本说起，账本记账权的演进</h5><ul>
+<li>由一个人独自记账，容易出现坏账。</li>
+</ul>
+<div id="flowchart-0" class="flow-chart"></div>
+- 由多个人轮流保管同一个账本记账，账本如若受人为或意外损害，仍然会出现坏账。
+
+<div align="center">
+    <img src="/2018/08/18/白话区块链/QQ20180818-122726@2x.png" width="300">
+</div>
+
+
+
+<ul>
+<li>每个人都拥有一本自己的账本，任何一个人改动来账本都必须要告知所有其他人，其他人会在自己的账本上同样地记上一笔，如果有人发现新改动的账目不对，可以拒绝接受，到了最后，以大多数人都一致的账目表示为准，共同记账是比较安全的做法，也不怕账本损坏丢失，后来大家还决定，每天被掷到要记账的人，能获得一些奖励，从当天的记账总额中划出一定奖励的比例。</li>
+</ul>
+<div align="center">
+    <img src="/2018/08/18/白话区块链/QQ20180818-145955@2x.png" width="300">
+</div>
+
+
+<h4 id="2-区块链技术理念"><a href="#2-区块链技术理念" class="headerlink" title="2. 区块链技术理念"></a>2. 区块链技术理念</h4><p>区块链技术属于一种技术方法，可以用来实现各种不同的业务功能，小到如日常记账，大到各种复杂的商业合约，等等，记录的数据各不相同。网络中的节点是独立的记账的，可是记账的内容要保持彼此一致。所用的方法就是设定一个游戏规则，通过这个规则选出一个记账的节点，就如上例中的掷骰子。在区块链系统中，这个所谓的“掷骰子”称为“共识算法”，就是一种大家都遵守的筛选方案。<br>区块链的技术概念，其实就是大家共同来参与记账，通过一种规则不断地选出账务打包者，其他节点接收验证，并且每个用户都有一对密钥表示自己，通过脚本系统的功能实现在公共网络中定向发送有价值的数据。</p>
+<h4 id="3-一般工作流程"><a href="#3-一般工作流程" class="headerlink" title="3 一般工作流程"></a>3 一般工作流程</h4><p>区块链系统有很多种，第一个应用区块链技术的软件就是比特币。<br>基于区块链技术的衍生系统有：闪电网络、公证通、以太坊、超级账本项目等。</p>
+<p>下图是一个转账交易流程，数据发送出去后，会被打包进区块，然后广播出去给所有的节点确认，确认没有问题就写入到各自的本地区块链账本中，当网络中的大多数节点都确认写入后，这个转账过程就算是完成了。</p>
+<div align="center">
+    <img src="/2018/08/18/白话区块链/QQ20180818-202837@2x.png" width="400">
+</div>
+
+<p>整个区块链网络，就是大家共同来维护一份公共账本。这个公共账本是一个逻辑上的概念，每个节点各自都是独立维护自己账本数据的，而所谓的公共账本，是说各自的账本要保持一致，保持一致的部分就是公共账本。</p>
+<div align="center">
+    <img src="/2018/08/18/白话区块链/QQ20180818-203745@2x.png" width="400">
+</div>
+
+<p>区块链技术其实就是围绕如何保持数据的一致、如何让这个公共账本的数据不被篡改来展开的。为了解决这些问题，区块链技术拥有一套技术栈。</p>
+<p><script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.6.5/flowchart.min.js"></script><textarea id="flowchart-0-code" style="display: none">op1=>operation: 账房先生
+io=>inputoutput: 账本
+
+op1(right)->io</textarea><textarea id="flowchart-0-options" style="display: none">{"scale":1,"line-width":2,"line-length":50,"text-margin":10,"font-size":12}</textarea><script>  var code = document.getElementById("flowchart-0-code").value;  var options = JSON.parse(decodeURIComponent(document.getElementById("flowchart-0-options").value));  var diagram = flowchart.parse(code);  diagram.drawSVG("flowchart-0", options);</script></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/区块链/">区块链</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-广告程序化" class="article article-type-post" itemscope itemprop="blogPost">
   
