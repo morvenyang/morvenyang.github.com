@@ -27,7 +27,9 @@
 <meta property="og:image" content="http://yoursite.com/2018/08/18/白话区块链/QQ20180818-145955@2x.png">
 <meta property="og:image" content="http://yoursite.com/2018/08/18/白话区块链/QQ20180818-202837@2x.png">
 <meta property="og:image" content="http://yoursite.com/2018/08/18/白话区块链/QQ20180818-203745@2x.png">
-<meta property="og:updated_time" content="2018-08-18T12:40:22.526Z">
+<meta property="og:image" content="http://yoursite.com/2018/08/18/白话区块链/QQ20180818-205517@2x.png">
+<meta property="og:image" content="http://yoursite.com/2018/08/18/白话区块链/QQ20180818-210533@2x.png">
+<meta property="og:updated_time" content="2018-08-18T13:57:49.254Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《白话区块链》笔记">
 <meta name="twitter:description" content="第1章 初识区块链例说区块链1. 从一本账本说起，账本记账权的演进 由一个人独自记账，容易出现坏账。   - 由多个人轮流保管同一个账本记账，账本如若受人为或意外损害，仍然会出现坏账。             每个人都拥有一本自己的账本，任何一个人改动来账本都必须要告知所有其他人，其他人会在自己的账本上同样地记上一笔，如果有人发现新改动的账目不对，可以拒绝接受，到了最后，以大多数人都一致的账目">
@@ -303,7 +305,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="第1章-初识区块链"><a href="#第1章-初识区块链" class="headerlink" title="第1章 初识区块链"></a>第1章 初识区块链</h2><h3 id="例说区块链"><a href="#例说区块链" class="headerlink" title="例说区块链"></a>例说区块链</h3><h5 id="1-从一本账本说起，账本记账权的演进"><a href="#1-从一本账本说起，账本记账权的演进" class="headerlink" title="1. 从一本账本说起，账本记账权的演进"></a>1. 从一本账本说起，账本记账权的演进</h5><ul>
+        <h2 id="第1章-初识区块链"><a href="#第1章-初识区块链" class="headerlink" title="第1章 初识区块链"></a>第1章 初识区块链</h2><h3 id="例说区块链"><a href="#例说区块链" class="headerlink" title="例说区块链"></a>例说区块链</h3><h4 id="1-从一本账本说起，账本记账权的演进"><a href="#1-从一本账本说起，账本记账权的演进" class="headerlink" title="1. 从一本账本说起，账本记账权的演进"></a>1. 从一本账本说起，账本记账权的演进</h4><ul>
 <li>由一个人独自记账，容易出现坏账。</li>
 </ul>
 <div id="flowchart-0" class="flow-chart"></div>
@@ -336,7 +338,28 @@
 </div>
 
 <p>区块链技术其实就是围绕如何保持数据的一致、如何让这个公共账本的数据不被篡改来展开的。为了解决这些问题，区块链技术拥有一套技术栈。</p>
-<p><script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.6.5/flowchart.min.js"></script><textarea id="flowchart-0-code" style="display: none">op1=>operation: 账房先生
+<h3 id="区块链技术栈"><a href="#区块链技术栈" class="headerlink" title="区块链技术栈"></a>区块链技术栈</h3><p>区块链本身只是一种数据的记录格式，与传统的记录格式不同的是，区块链是将产生的数据按照一定的时间间隔，分成一个个的数据块记录，然后再根据数据块的先后关系串联起来，也就是所谓的区块链了。<br>区块链是一套技术组合的代表，不管是比特币、莱特币、以太坊还是其他，核心结构和工作原理都是共同的。</p>
+<div align="center">
+    <img src="/2018/08/18/白话区块链/QQ20180818-205517@2x.png" width="400">
+</div>
+
+<h4 id="1-区块链账本"><a href="#1-区块链账本" class="headerlink" title="1. 区块链账本"></a>1. 区块链账本</h4><p>区块链，就是“区块+链”，所谓的区块就是指数据块的意思，每一个数据块之间通过某个标志连接起来，从而形成一条链。</p>
+<p>比特币中区块链数据的组成示意图：</p>
+<div align="center">
+    <img src="/2018/08/18/白话区块链/QQ20180818-210533@2x.png" width="400">
+</div>
+
+<p>在区块链系统中，一个节点产生的数据或更改的数据要发送到网络中的其他节点接受验证，而其他节点是不会验证通过一个被篡改的数据的，因为跟自己的本地区块链账本数据匹配不起来，这也是区块链数据不可篡改的一个很重要的技术设计。</p>
+<h4 id="2-共识机制"><a href="#2-共识机制" class="headerlink" title="2. 共识机制"></a>2. 共识机制</h4><p>在区块链系统中，每个节点必须要做的事情就是让自己的账本跟其他节点的账本保持一致。</p>
+<p>区块链是一个分布式的对等网络结构，在这个结构中没有哪个节点是“老大”，一切都要商量着来。在区块链系统中，如何让每个节点都通过一个规则将各自的数据保持一致是一个很核心的问题，这个问题的解决方案就是制定一套共识算法。</p>
+<p>共识算法其实就是一个规则，每个节点都按照这个规则去确认各自的数据。在区块链系统中，存在多种共识算法，比如PoW(Proof of Work, 工作量证明)、PoS(Proof of stake, 权益证明)、DPoS(Delegate Proof of Stake, 委托权益证明)、PBFT(Practical Byzantine Fault Tolerance, 实用拜占庭容错算法）等，各种不同的算法，其实就是不同的游戏玩法。</p>
+<h4 id="3-密码算法"><a href="#3-密码算法" class="headerlink" title="3. 密码算法"></a>3. 密码算法</h4><p>区块链各个区块之间的连接，往往都不是靠数据地址来关联的，而是靠一种叫作哈希值的数据来关联的。哈希值是通过密码算法中的哈希算法计算得出的。哈希算法可以通过对一段数据计算后得出一段摘要字符串，这中摘要字符串与原始数据是唯一对应的。<br>区块链账本对每个区块都会计算出一个哈希值，称为区块哈希，通过区块哈希来串联区块。</p>
+<p>除了整个区块会被计算出一个哈希值外，区块中包含的每一笔事务数据也会被计算出一个哈希值，称为“事务哈希”，每一个事务哈希都可以唯一地表示一个事务。对一个区块中所有的事务进行哈希计算后，可以得出一组事务哈希，再通过对这些事务哈希进行加工处理，最终会得出一颗哈希树的数据结构。哈希树的顶部就是树根，称为“梅克尔根”。通过这个梅克尔根就可以将整个区块中的事务约束起来，只要区块中的事务有任何改变，梅克尔根就会发生变化，利用这一点，可以确保区块数据的完整性。</p>
+<h4 id="4-脚本系统"><a href="#4-脚本系统" class="headerlink" title="4. 脚本系统"></a>4. 脚本系统</h4><p>所谓脚本，就是指一组程序规则。在区块链系统中，有些系统中的程序规则是固定的，比如在比特币系统中，只能进行比特币的发送与接收，这个发送与接收的过程就是通过实现在比特币中的一组脚本程序来完成的；而有些系统是允许用户自行编写一组程序规则的，编写好后可以部署到区块链账本中，这样就可以扩展区块链系统的功能，比如以太坊就是通过实现一套可以自定义功能的脚本系统，进而实现了智能合约的功能。</p>
+<p>脚本系统使得在区块链中可以实现各种各样的业务功能。本来大家只是通过区块链来记财务账的，通过脚本系统，大家可以使用区块链来记录各种各样的数据，比如订单、众筹账户、物流信息、供应链信息等，这些数据一旦可以记录到区块链上，那么区块链的优点就能够被充分地发挥出来。</p>
+<h4 id="5-网络路由"><a href="#5-网络路由" class="headerlink" title="5. 网络路由"></a>5. 网络路由</h4><p>在分布式网络结构中，不存在一个指定的服务器，大家没法通过一个服务器来直接交换彼此的身份信息，就只能依靠彼此联系并传播信息。在区块链系统中，这个功能一般会定义成一种协议，称为“节点发现协议”。</p>
+<p>除了要发现节点外，更重要的一个功能就是同步数据。节点要保持自己的账本数据是最新的，就必须要时时更新自己的数据。通过向邻近节点发送数据请求来获得最新的数据，节点彼此都充当服务者和被服务者，通过这种方式，网络中的每一个节点都会在某个时刻达成数据上的一致。</p>
+<p>网络路由可以说是区块链系统中的触角，通过大量的触角将每个节点连入网络，从而形成一个功能强大的区块链共识网络。<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.6.5/flowchart.min.js"></script><textarea id="flowchart-0-code" style="display: none">op1=>operation: 账房先生
 io=>inputoutput: 账本
 
 op1(right)->io</textarea><textarea id="flowchart-0-options" style="display: none">{"scale":1,"line-width":2,"line-length":50,"text-margin":10,"font-size":12}</textarea><script>  var code = document.getElementById("flowchart-0-code").value;  var options = JSON.parse(decodeURIComponent(document.getElementById("flowchart-0-options").value));  var diagram = flowchart.parse(code);  diagram.drawSVG("flowchart-0", options);</script></p>
@@ -351,7 +374,7 @@ op1(right)->io</textarea><textarea id="flowchart-0-options" style="display: none
         <p><span>本文标题:</span><a href="/2018/08/18/白话区块链/">《白话区块链》笔记</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">morven</a></p>
         <p><span>发布时间:</span>2018-08-18, 11:30:43</p>
-        <p><span>最后更新:</span>2018-08-18, 20:40:22</p>
+        <p><span>最后更新:</span>2018-08-18, 21:57:49</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/08/18/白话区块链/" title="《白话区块链》笔记">http://yoursite.com/2018/08/18/白话区块链/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/08/18/白话区块链/　　作者: morven" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -381,7 +404,7 @@ op1(right)->io</textarea><textarea id="flowchart-0-options" style="display: none
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#第1章-初识区块链"><span class="toc-number">1.</span> <span class="toc-text">第1章 初识区块链</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#例说区块链"><span class="toc-number">1.1.</span> <span class="toc-text">例说区块链</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-从一本账本说起，账本记账权的演进"><span class="toc-number">1.1.0.1.</span> <span class="toc-text">1. 从一本账本说起，账本记账权的演进</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-区块链技术理念"><span class="toc-number">1.1.1.</span> <span class="toc-text">2. 区块链技术理念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-一般工作流程"><span class="toc-number">1.1.2.</span> <span class="toc-text">3 一般工作流程</span></a></li></ol></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#第1章-初识区块链"><span class="toc-number">1.</span> <span class="toc-text">第1章 初识区块链</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#例说区块链"><span class="toc-number">1.1.</span> <span class="toc-text">例说区块链</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-从一本账本说起，账本记账权的演进"><span class="toc-number">1.1.1.</span> <span class="toc-text">1. 从一本账本说起，账本记账权的演进</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-区块链技术理念"><span class="toc-number">1.1.2.</span> <span class="toc-text">2. 区块链技术理念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-一般工作流程"><span class="toc-number">1.1.3.</span> <span class="toc-text">3 一般工作流程</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#区块链技术栈"><span class="toc-number">1.2.</span> <span class="toc-text">区块链技术栈</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-区块链账本"><span class="toc-number">1.2.1.</span> <span class="toc-text">1. 区块链账本</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-共识机制"><span class="toc-number">1.2.2.</span> <span class="toc-text">2. 共识机制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-密码算法"><span class="toc-number">1.2.3.</span> <span class="toc-text">3. 密码算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-脚本系统"><span class="toc-number">1.2.4.</span> <span class="toc-text">4. 脚本系统</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-网络路由"><span class="toc-number">1.2.5.</span> <span class="toc-text">5. 网络路由</span></a></li></ol></li></ol></li></ol>
         
     </div>
     <style>
