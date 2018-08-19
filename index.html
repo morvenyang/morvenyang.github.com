@@ -293,8 +293,10 @@
 <li>由一个人独自记账，容易出现坏账。</li>
 </ul>
 <div id="flowchart-0" class="flow-chart"></div>
-- 由多个人轮流保管同一个账本记账，账本如若受人为或意外损害，仍然会出现坏账。
 
+<ul>
+<li>由多个人轮流保管同一个账本记账，账本如若受人为或意外损害，仍然会出现坏账。</li>
+</ul>
 <div align="center">
     <img src="/2018/08/18/白话区块链/QQ20180818-122726@2x.png" width="300">
 </div>
@@ -343,7 +345,66 @@
 <p>脚本系统使得在区块链中可以实现各种各样的业务功能。本来大家只是通过区块链来记财务账的，通过脚本系统，大家可以使用区块链来记录各种各样的数据，比如订单、众筹账户、物流信息、供应链信息等，这些数据一旦可以记录到区块链上，那么区块链的优点就能够被充分地发挥出来。</p>
 <h4 id="5-网络路由"><a href="#5-网络路由" class="headerlink" title="5. 网络路由"></a>5. 网络路由</h4><p>在分布式网络结构中，不存在一个指定的服务器，大家没法通过一个服务器来直接交换彼此的身份信息，就只能依靠彼此联系并传播信息。在区块链系统中，这个功能一般会定义成一种协议，称为“节点发现协议”。</p>
 <p>除了要发现节点外，更重要的一个功能就是同步数据。节点要保持自己的账本数据是最新的，就必须要时时更新自己的数据。通过向邻近节点发送数据请求来获得最新的数据，节点彼此都充当服务者和被服务者，通过这种方式，网络中的每一个节点都会在某个时刻达成数据上的一致。</p>
-<p>网络路由可以说是区块链系统中的触角，通过大量的触角将每个节点连入网络，从而形成一个功能强大的区块链共识网络。<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.6.5/flowchart.min.js"></script><textarea id="flowchart-0-code" style="display: none">op1=>operation: 账房先生
+<p>网络路由可以说是区块链系统中的触角，通过大量的触角将每个节点连入网络，从而形成一个功能强大的区块链共识网络。</p>
+<h3 id="区块链分类与架构"><a href="#区块链分类与架构" class="headerlink" title="区块链分类与架构"></a>区块链分类与架构</h3><p>从比特币开始，早期的区块链系统都是面向数字货币的，如比特币、莱特币等，这个阶段我们可以认为区块链系统是一个支持数字货币合约的系统；之后便出现来更加灵活的，能够支持自定义智能合约的系统，其代表作是以太坊，可以认为以太坊就是比特币这样的数字货币系统的扩展；再之后的代表就是超级账本项目，尤其是其中的Fabric子项目，在这个系统中，超越来对金融范畴的应用，支持各个领域的数据定义。</p>
+<h4 id="1-区块链架构"><a href="#1-区块链架构" class="headerlink" title="1. 区块链架构"></a>1. 区块链架构</h4><ul>
+<li>区块链1.0架构</li>
+</ul>
+<div align="center">
+    <img src="/2018/08/18/白话区块链/QQ20180819-100338@2x.png" width="400">
+</div>
+
+<ul>
+<li>区块链2.0架构</li>
+</ul>
+<div align="center">
+    <img src="/2018/08/18/白话区块链/QQ20180819-100555@2x.png" width="400">
+</div>
+
+<ul>
+<li>区块链3.0架构</li>
+</ul>
+<div align="center">
+    <img src="/2018/08/18/白话区块链/QQ20180819-100844@2x.png" width="400">
+</div>
+
+
+<h4 id="2-区块链分类"><a href="#2-区块链分类" class="headerlink" title="2. 区块链分类"></a>2. 区块链分类</h4><p>根据网络范围，可以划分为公有链、私有链、联盟链。</p>
+<ul>
+<li>公有链</li>
+</ul>
+<p>所谓公有链就是完全对外开放，任何人都可以任意使用，没有权限的设定，也没有身份认证之类，不但可以任意参与使用，而且发生的所有数据都可以任意查看，完全公开透明。比特币就是一个公有链网络系统。凡是需要公众参与，需要最大限度保证数据公开透明的系统，都适用于公有链，比如数字货币系统、众筹系统、金融交易系统等。</p>
+<ul>
+<li>私有链</li>
+</ul>
+<p>所谓私有链就是指不对外开放，仅仅在组织内部使用的系统，比如企业的票据管理、财务审计、供应链管理等，或者一些政务管理系统。</p>
+<ul>
+<li>联盟链</li>
+</ul>
+<p>联盟链的网络范围介于公有链和私有链之间，通常是使用在多个成员角色之中，比如银行之间的支付结算、企业之间的物流等。</p>
+<p>根据部署环境，可以划分为主链和测试链</p>
+<ul>
+<li>主链</li>
+</ul>
+<p>所谓主链，也就是部署在生产环境的真正的区块链系统，软件在正式发布前会经过很多内部的测试版本，用于发现一些可能存在的bug，并且用来内部演示以便于查看效果，直到最后才会发布正式版。</p>
+<ul>
+<li>测试链</li>
+</ul>
+<p>开发者为了方便大家学习使用提供的测试用途的区块链网络，比如比特币测试链、以太坊测试链等。</p>
+<p>根据对接类型，可以划分为单链、侧链和互联链。</p>
+<ul>
+<li>单链</li>
+</ul>
+<p>能够单独运行的区块链系统都可以称为“单链”。</p>
+<ul>
+<li>侧链</li>
+</ul>
+<p>侧链属于一种区块链系统的跨链技术，这个概念主要是由比特币侧链发起的。如何利用比特币网络的优势来运行其他的区块链系统呢？可以考虑在现有的比特币区块链之上，建立一个新的区块链系统，新的区块链系统可以具备很多比特币没有的功能，比如私密交易、快速支付、智能合约、签名覆盖金额等，并且能够与比特币的主区块链进行互通。</p>
+<ul>
+<li>互联链</li>
+</ul>
+<p>与传统软件不同的是，区块链应用拥有独特的性质，比如数据不可篡改性、完整性证明、自动网络共识、智能合约等，从最初的数字货币到未来可能的区块链可编程社会，这些不单单会改变生活服务方式，还会促进社会治理结构的变革，如果说每一条链都是一条神经的话，一旦互联起来，就像神经系统一般，将会给我们的社会发展带来更新层次的智能化。</p>
+<p><script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.6.5/flowchart.min.js"></script><textarea id="flowchart-0-code" style="display: none">op1=>operation: 账房先生
 io=>inputoutput: 账本
 
 op1(right)->io</textarea><textarea id="flowchart-0-options" style="display: none">{"scale":1,"line-width":2,"line-length":50,"text-margin":10,"font-size":12}</textarea><script>  var code = document.getElementById("flowchart-0-code").value;  var options = JSON.parse(decodeURIComponent(document.getElementById("flowchart-0-options").value));  var diagram = flowchart.parse(code);  diagram.drawSVG("flowchart-0", options);</script></p>
