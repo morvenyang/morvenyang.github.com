@@ -35,7 +35,9 @@
 <meta property="og:image" content="http://yoursite.com/2018/08/18/白话区块链/QQ20180819-115145@2x.png">
 <meta property="og:image" content="http://yoursite.com/2018/08/18/白话区块链/QQ20180819-155751@2x.png">
 <meta property="og:image" content="http://yoursite.com/2018/08/18/白话区块链/QQ20180819-162144@2x.png">
-<meta property="og:updated_time" content="2018-08-19T08:26:38.721Z">
+<meta property="og:image" content="http://yoursite.com/2018/08/18/白话区块链/QQ20180819-203845@2x.png">
+<meta property="og:image" content="http://yoursite.com/2018/08/18/白话区块链/QQ20180821-075208@2x.png">
+<meta property="og:updated_time" content="2018-08-20T23:52:37.602Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《白话区块链》笔记">
 <meta name="twitter:description" content="第1章 初识区块链例说区块链1. 从一本账本说起，账本记账权的演进 由一个人独自记账，容易出现坏账。     由多个人轮流保管同一个账本记账，账本如若受人为或意外损害，仍然会出现坏账。             每个人都拥有一本自己的账本，任何一个人改动来账本都必须要告知所有其他人，其他人会在自己的账本上同样地记上一笔，如果有人发现新改动的账目不对，可以拒绝接受，到了最后，以大多数人都一致的账目">
@@ -196,7 +198,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/markDownd-数学公式/">markDownd 数学公式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/区块链/">区块链</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Objective-C/">Objective-C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markDownd-数学公式/">markDownd 数学公式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/区块链/">区块链</a></li></ul>
                     </div>
                 </section>
                 
@@ -567,7 +569,29 @@
 </div>
 
 
-<p><script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.6.5/flowchart.min.js"></script><textarea id="flowchart-0-code" style="display: none">op1=>operation: 账房先生
+<h4 id="5-比特币账户模型：UTXO"><a href="#5-比特币账户模型：UTXO" class="headerlink" title="5. 比特币账户模型：UTXO"></a>5. 比特币账户模型：UTXO</h4><p>UTXO(Unspent Transaction Output, “未花费事务输出”)</p>
+<div align="center">
+    <img src="/2018/08/18/白话区块链/QQ20180819-203845@2x.png" width="400">
+</div>
+
+<ul>
+<li><p>比特币的交易中不是通过账户的增减来实现的，而是一笔笔关联的输入/输出交易事务。</p>
+</li>
+<li><p>每一笔的交易都要花费“输入”，然后产生“输出”，这个产生的“输出”就是所谓的“未花费过的交易输出”，也就是UTXO。</p>
+</li>
+<li><p>由于没有账户的概念，因此当“输入”部分的金额大于所需的“输出”时，必须给自己找零，这个找零也是作为交易的一部分包含在“输出”中。</p>
+</li>
+</ul>
+<h4 id="6-手动编译比特币源码"><a href="#6-手动编译比特币源码" class="headerlink" title="6. 手动编译比特币源码"></a>6. 手动编译比特币源码</h4><p>比特币源码地址：<a href="https://github.com/bitcoin/bitcoin" target="_blank" rel="noopener">https://github.com/bitcoin/bitcoin</a></p>
+<h3 id="区块链的技术意义"><a href="#区块链的技术意义" class="headerlink" title="区块链的技术意义"></a>区块链的技术意义</h3><h4 id="1-数据不可篡改性"><a href="#1-数据不可篡改性" class="headerlink" title="1. 数据不可篡改性"></a>1. 数据不可篡改性</h4><p>区块链系统不是一个中心化的软件设施，是一个P2P的对等网络结构软件。</p>
+<h4 id="2-分布式存储"><a href="#2-分布式存储" class="headerlink" title="2. 分布式存储"></a>2. 分布式存储</h4><p>区块链系统每个运行的节点都拥有一份完整的数据副本，这样的设计不但使得数据存储避免了单故障点的问题，还可以让每个节点能够独立地验证和检索数据，大大增加了整个系统的可靠性。</p>
+<h4 id="3-匿名性"><a href="#3-匿名性" class="headerlink" title="3. 匿名性"></a>3. 匿名性</h4><p>目前几乎所有的区块链产品都是使用所谓的地址来标识用户的，不再需要提供其他任何能标识出用户身份的信息，地址通常是通过公开密钥算法生成的公钥转换而来的。</p>
+<h4 id="4-价值传递"><a href="#4-价值传递" class="headerlink" title="4. 价值传递"></a>4. 价值传递</h4><p>比特币是一种数字资产，它是由比特币软件组成的网络来维护的，在这个网络中，不需要其他第三方，自己可以根据规则发行比特币，并且能确保发行的比特币是具有价值的（工作量证明），而这种价值的认定是通过网络中所有节点来自动验证的，节点之间达成共识就算是认可了，整个过程都是自成一个体系来运行的，人们在转账交易比特币的时候，价值就发生了传递，而如果将其他的资产比如股票、合同、版权、债权等锚定比特币，那么其他的资产也就能方便地进行传递转移了。</p>
+<h4 id="5-自动网络共识"><a href="#5-自动网络共识" class="headerlink" title="5. 自动网络共识"></a>5. 自动网络共识</h4><p>比特币从发行到转账交易，都是由网络中的节点自动进行身份认证和一系列的检查的，检查通过后就达成了网络共识，一笔交易就算是确定了，各个不同节点之间达成共识的过程不再需要我们去签名，去按指纹或者去打一份什么证明了，因为每个节点都遵守一份共同的约定规则，只要一项交易符合所有的约定规则就能被确认，每个节点都确认，大家就一致认同了。</p>
+<h4 id="6-可编程合约"><a href="#6-可编程合约" class="headerlink" title="6. 可编程合约"></a>6. 可编程合约</h4><p>在比特币系统中，并不像银行账户一样，将金额储存在某个账户下就表明一笔资产是某个账户拥有的，而是使用了一种脚本程序，通过脚本程序解锁和锁定一笔资产，简单地说，就是让资产具备更强的编程可控能力，拥有密钥的用户可以提交自己的签名信息让脚本来验证身份，以证明自己对资产的所有权，并且可以通过程序设定对资产的管理方式。</p>
+<h3 id="知识点导图"><a href="#知识点导图" class="headerlink" title="知识点导图"></a>知识点导图</h3><p><div align="center">
+    <img src="/2018/08/18/白话区块链/QQ20180821-075208@2x.png" width="400">
+</div><script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.6.5/flowchart.min.js"></script><textarea id="flowchart-0-code" style="display: none">op1=>operation: 账房先生
 io=>inputoutput: 账本
 
 op1(right)->io</textarea><textarea id="flowchart-0-options" style="display: none">{"scale":1,"line-width":2,"line-length":50,"text-margin":10,"font-size":12}</textarea><script>  var code = document.getElementById("flowchart-0-code").value;  var options = JSON.parse(decodeURIComponent(document.getElementById("flowchart-0-options").value));  var diagram = flowchart.parse(code);  diagram.drawSVG("flowchart-0", options);</script></p>
@@ -582,7 +606,7 @@ op1(right)->io</textarea><textarea id="flowchart-0-options" style="display: none
         <p><span>本文标题:</span><a href="/2018/08/18/白话区块链/">《白话区块链》笔记</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">morven</a></p>
         <p><span>发布时间:</span>2018-08-18, 11:30:43</p>
-        <p><span>最后更新:</span>2018-08-19, 16:26:38</p>
+        <p><span>最后更新:</span>2018-08-21, 07:52:37</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/08/18/白话区块链/" title="《白话区块链》笔记">http://yoursite.com/2018/08/18/白话区块链/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/08/18/白话区块链/　　作者: morven" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -596,6 +620,12 @@ op1(right)->io</textarea><textarea id="flowchart-0-options" style="display: none
 
 
     <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2018/08/19/编写高质量Objective-C/">
+                    《编写高质量Objective-C》笔记
+                </a>
+            </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
@@ -612,7 +642,7 @@ op1(right)->io</textarea><textarea id="flowchart-0-options" style="display: none
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#第1章-初识区块链"><span class="toc-number">1.</span> <span class="toc-text">第1章 初识区块链</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#例说区块链"><span class="toc-number">1.1.</span> <span class="toc-text">例说区块链</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-从一本账本说起，账本记账权的演进"><span class="toc-number">1.1.1.</span> <span class="toc-text">1. 从一本账本说起，账本记账权的演进</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-区块链技术理念"><span class="toc-number">1.1.2.</span> <span class="toc-text">2. 区块链技术理念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-一般工作流程"><span class="toc-number">1.1.3.</span> <span class="toc-text">3 一般工作流程</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#区块链技术栈"><span class="toc-number">1.2.</span> <span class="toc-text">区块链技术栈</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-区块链账本"><span class="toc-number">1.2.1.</span> <span class="toc-text">1. 区块链账本</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-共识机制"><span class="toc-number">1.2.2.</span> <span class="toc-text">2. 共识机制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-密码算法"><span class="toc-number">1.2.3.</span> <span class="toc-text">3. 密码算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-脚本系统"><span class="toc-number">1.2.4.</span> <span class="toc-text">4. 脚本系统</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-网络路由"><span class="toc-number">1.2.5.</span> <span class="toc-text">5. 网络路由</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#区块链分类与架构"><span class="toc-number">1.3.</span> <span class="toc-text">区块链分类与架构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-区块链架构"><span class="toc-number">1.3.1.</span> <span class="toc-text">1. 区块链架构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-区块链分类"><span class="toc-number">1.3.2.</span> <span class="toc-text">2. 区块链分类</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一切源自比特币"><span class="toc-number">1.4.</span> <span class="toc-text">一切源自比特币</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-比特币技术论文介绍"><span class="toc-number">1.4.1.</span> <span class="toc-text">1. 比特币技术论文介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-比特币核心程序：中本聪客户端"><span class="toc-number">1.4.2.</span> <span class="toc-text">2. 比特币核心程序：中本聪客户端</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#比特币的发行：挖矿"><span class="toc-number">1.4.3.</span> <span class="toc-text">比特币的发行：挖矿</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-比特币钱包：核心钱包与轻钱包"><span class="toc-number">1.4.4.</span> <span class="toc-text">4. 比特币钱包：核心钱包与轻钱包</span></a></li></ol></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#第1章-初识区块链"><span class="toc-number">1.</span> <span class="toc-text">第1章 初识区块链</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#例说区块链"><span class="toc-number">1.1.</span> <span class="toc-text">例说区块链</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-从一本账本说起，账本记账权的演进"><span class="toc-number">1.1.1.</span> <span class="toc-text">1. 从一本账本说起，账本记账权的演进</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-区块链技术理念"><span class="toc-number">1.1.2.</span> <span class="toc-text">2. 区块链技术理念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-一般工作流程"><span class="toc-number">1.1.3.</span> <span class="toc-text">3 一般工作流程</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#区块链技术栈"><span class="toc-number">1.2.</span> <span class="toc-text">区块链技术栈</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-区块链账本"><span class="toc-number">1.2.1.</span> <span class="toc-text">1. 区块链账本</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-共识机制"><span class="toc-number">1.2.2.</span> <span class="toc-text">2. 共识机制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-密码算法"><span class="toc-number">1.2.3.</span> <span class="toc-text">3. 密码算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-脚本系统"><span class="toc-number">1.2.4.</span> <span class="toc-text">4. 脚本系统</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-网络路由"><span class="toc-number">1.2.5.</span> <span class="toc-text">5. 网络路由</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#区块链分类与架构"><span class="toc-number">1.3.</span> <span class="toc-text">区块链分类与架构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-区块链架构"><span class="toc-number">1.3.1.</span> <span class="toc-text">1. 区块链架构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-区块链分类"><span class="toc-number">1.3.2.</span> <span class="toc-text">2. 区块链分类</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一切源自比特币"><span class="toc-number">1.4.</span> <span class="toc-text">一切源自比特币</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-比特币技术论文介绍"><span class="toc-number">1.4.1.</span> <span class="toc-text">1. 比特币技术论文介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-比特币核心程序：中本聪客户端"><span class="toc-number">1.4.2.</span> <span class="toc-text">2. 比特币核心程序：中本聪客户端</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#比特币的发行：挖矿"><span class="toc-number">1.4.3.</span> <span class="toc-text">比特币的发行：挖矿</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-比特币钱包：核心钱包与轻钱包"><span class="toc-number">1.4.4.</span> <span class="toc-text">4. 比特币钱包：核心钱包与轻钱包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-比特币账户模型：UTXO"><span class="toc-number">1.4.5.</span> <span class="toc-text">5. 比特币账户模型：UTXO</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-手动编译比特币源码"><span class="toc-number">1.4.6.</span> <span class="toc-text">6. 手动编译比特币源码</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#区块链的技术意义"><span class="toc-number">1.5.</span> <span class="toc-text">区块链的技术意义</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-数据不可篡改性"><span class="toc-number">1.5.1.</span> <span class="toc-text">1. 数据不可篡改性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-分布式存储"><span class="toc-number">1.5.2.</span> <span class="toc-text">2. 分布式存储</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-匿名性"><span class="toc-number">1.5.3.</span> <span class="toc-text">3. 匿名性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-价值传递"><span class="toc-number">1.5.4.</span> <span class="toc-text">4. 价值传递</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-自动网络共识"><span class="toc-number">1.5.5.</span> <span class="toc-text">5. 自动网络共识</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-可编程合约"><span class="toc-number">1.5.6.</span> <span class="toc-text">6. 可编程合约</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#知识点导图"><span class="toc-number">1.6.</span> <span class="toc-text">知识点导图</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -668,7 +698,9 @@ op1(right)->io</textarea><textarea id="flowchart-0-options" style="display: none
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2018/08/19/编写高质量Objective-C/" title="上一篇: 《编写高质量Objective-C》笔记">
+                <i class="fa fa-angle-left"></i>
+            </a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
@@ -680,7 +712,7 @@ op1(right)->io</textarea><textarea id="flowchart-0-options" style="display: none
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/08/18/白话区块链/">《白话区块链》笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/18/广告程序化/">《程序化广告实战》笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/17/markDownd公式/">MarkDownd中数学公式整理</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/17/hello-world/">Hello World</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/08/19/编写高质量Objective-C/">《编写高质量Objective-C》笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/18/白话区块链/">《白话区块链》笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/18/广告程序化/">《程序化广告实战》笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/17/markDownd公式/">MarkDownd中数学公式整理</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/17/hello-world/">Hello World</a></li></ul>
 
 
 

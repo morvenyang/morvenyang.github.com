@@ -4,13 +4,30 @@
     
   <url>
     <loc>http://yoursite.com/2018/08/18/%E7%99%BD%E8%AF%9D%E5%8C%BA%E5%9D%97%E9%93%BE/</loc>
-    <lastmod>2018-08-19T08:26:38.721Z</lastmod>
+    <lastmod>2018-08-20T23:52:37.602Z</lastmod>
     <data>
         <display>
         <title>《白话区块链》笔记</title>
         <pubTime>2018-08-18T03:30:43.000Z</pubTime>
         
         <tag>区块链 </tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2018/08/19/%E7%BC%96%E5%86%99%E9%AB%98%E8%B4%A8%E9%87%8FObjective-C/</loc>
+    <lastmod>2018-08-20T01:37:47.881Z</lastmod>
+    <data>
+        <display>
+        <title>《编写高质量Objective-C》笔记</title>
+        <pubTime>2018-08-19T13:19:24.000Z</pubTime>
+        
+        <tag>Objective-C </tag>
          
          
            
