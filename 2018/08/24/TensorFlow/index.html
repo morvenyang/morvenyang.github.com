@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html >
+<head>
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="morven" />
+
+
+
+<meta name="description" content="TensorFlow基础Google公司不仅是大数据和云计算的领导者，在机器学习和深度学习领域也有很好的实践和积累，其内部使用的深度学习框架TensorFlow使深度学习爱好者的学习门槛越来越低。TensorFlow作为一个用于机器智能的开源软件库，是目前深度学习的主流框架之一，广泛应用于学术界与工业界。TensorFlow自开源至今，相继推出了分布式版本、服务器框架、可视化Tensorboar">
+<meta name="keywords" content="TensorFlow">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TensorFlow机器学习">
+<meta property="og:url" content="http://yoursite.com/2018/08/24/TensorFlow/index.html">
+<meta property="og:site_name" content="Morvenyang2018">
+<meta property="og:description" content="TensorFlow基础Google公司不仅是大数据和云计算的领导者，在机器学习和深度学习领域也有很好的实践和积累，其内部使用的深度学习框架TensorFlow使深度学习爱好者的学习门槛越来越低。TensorFlow作为一个用于机器智能的开源软件库，是目前深度学习的主流框架之一，广泛应用于学术界与工业界。TensorFlow自开源至今，相继推出了分布式版本、服务器框架、可视化Tensorboar">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-08-27T08:31:49.450Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="TensorFlow机器学习">
+<meta name="twitter:description" content="TensorFlow基础Google公司不仅是大数据和云计算的领导者，在机器学习和深度学习领域也有很好的实践和积累，其内部使用的深度学习框架TensorFlow使深度学习爱好者的学习门槛越来越低。TensorFlow作为一个用于机器智能的开源软件库，是目前深度学习的主流框架之一，广泛应用于学术界与工业界。TensorFlow自开源至今，相继推出了分布式版本、服务器框架、可视化Tensorboar">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="Morvenyang2018" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>TensorFlow机器学习 | Morvenyang2018</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: 
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+
+
+
+</head>
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">morven</a></h1>
+        </hgroup>
+
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Objective-C/">Objective-C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TensorFlow/">TensorFlow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markDownd-数学公式/">markDownd 数学公式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/区块链/">区块链</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于前端</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">morven</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">morven</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-TensorFlow" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/08/24/TensorFlow/" class="article-date">
+      <time datetime="2018-08-24T11:17:15.000Z" itemprop="datePublished">2018-08-24</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      TensorFlow机器学习
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TensorFlow/">TensorFlow</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="TensorFlow基础"><a href="#TensorFlow基础" class="headerlink" title="TensorFlow基础"></a>TensorFlow基础</h2><p>Google公司不仅是大数据和云计算的领导者，在机器学习和深度学习领域也有很好的实践和积累，其内部使用的深度学习框架TensorFlow使深度学习爱好者的学习门槛越来越低。TensorFlow作为一个用于机器智能的开源软件库，是目前深度学习的主流框架之一，广泛应用于学术界与工业界。TensorFlow自开源至今，相继推出了分布式版本、服务器框架、可视化Tensorboard以及不胜枚举的模型在该框架下的实现。</p>
+<h3 id="TensorFlow的特点"><a href="#TensorFlow的特点" class="headerlink" title="TensorFlow的特点"></a>TensorFlow的特点</h3><p>TensorFlow是Google基于DistBelief研发的第二代人工智能学习系统，其命名来源于自身的运行原理。TensorFlow是一个采用数据流图(Data Flow Graph)、用于数值计算的开源软件库。数据流图用节点(Node)和线(Edge)的有向图来描述数学计算。节点一般用来表示施加的数学操作，但也可以表示数据(Feed In)的起点/输出(Push Out)的终点，或者是读取/写入持久变量(Persistent Variable)的终点。线表示节点之间的输入/输出关系。这些数据线可以传输大小可动态调整的多维数据数组，即张量(Tensor)。</p>
+<ul>
+<li>高度的灵活性</li>
+</ul>
+<p>TensorFlow不是一个严格的神经网络库。只要用户可以将计算表示为一个数据流图，就可以使用TensorFlow来构建图，描写驱动计算的内部循环。</p>
+<ul>
+<li>真正的可移植性</li>
+</ul>
+<p>TensorFlow既可以在CPU和GPU上运行，又可以运行于台式机、服务器、笔记本电脑等。TensorFlow还可以将训练好的模型作为产品的一部分用于手机App。TensorFlow同样可以将模型作为云端服务运行在自己的服务器上，或者运行于Docker容器。</p>
+<ul>
+<li>科研与产品无缝对接</li>
+</ul>
+<p>Google科学家利用TensorFlow尝试新的算法，其产品团队则用TensorFlow来训练和使用计算模型，并直接提供给在线用户。</p>
+<ul>
+<li>自动求微分</li>
+</ul>
+<p>基于梯度的机器学习算法受益于TensorFlow自动求微分的能力。用户只需要定义预测模型的结构，将这个结构和目标函数(Objective Function)结合在一起并添加数据，TensorFlow将自动为用户计算相关的微分导数。</p>
+<ul>
+<li>多语言支持</li>
+</ul>
+<p>有一个合理的C++使用界面和一个易用的Python使用界面来构建和执行指定的“图”。还支持用户创造自己喜欢的语言界面，比如Go、Java、Lua、JavaScript或者是R语言。</p>
+<ul>
+<li>性能最优化</li>
+</ul>
+<p>由于TensorFlow对线程、队列、异步操作等给予最佳支持，使其计算潜能得以有效发挥。TensorFlow可以将硬件的计算潜能全部发挥出来，可充分利用CPU和多CPU。</p>
+<h3 id="TensorFlow中的模型"><a href="#TensorFlow中的模型" class="headerlink" title="TensorFlow中的模型"></a>TensorFlow中的模型</h3><p>TensorFlow的三种主要模型：计算模型、数据模型和运行模型。</p>
+<ul>
+<li>计算模型</li>
+</ul>
+<p>计算图(Graph)是TensorFlow中一个最基本的概念，是TensorFlow的计算模型。TensorFlow中的所有计算都会被转化为计算图上的节点，可以把计算图看作一种有向图，TensorFlow中的每一个计算都是计算图上的一个节点，而节点之间的边描述了计算之间的依赖关系。</p>
+<p>在TensorFlow程序中，系统会维护一个默认的计算图，通过tf.get_default_graph()函数可以获取当前默认的计算图，不同的计算图上的张量和运算不会共享。有效地整理TensorFlow中的资源同样也是计算图的重要功能之一。在一个计算图中，可以通过集合(Collection)来管理不同类别的计算资源，比如通过tf.add_to_collection函数可以将资源加入集合中，然后通过tf.get_collection获取集合中的资源。</p>
+<ul>
+<li>数据模型</li>
+</ul>
+<p>张量(Tensor)是TensorFlow中一个非常重要的概念，是TensorFlow的数据模型。在TensorFlow程序中，所有数据都可以通过张量的形式来表示。张量的最基本属性是纬度，其中零维张量表示为标量(Scalar)，一维张量表示为向量(Vector)，当维数超过2时，张量就可以理解为n维数组，但在TensorFLow中张量并不是以数的形式实现的，只是对TensorFlow中运算结果的引用。</p>
+<p>一个张量中主要保存的是其名字(Name)、维度(Shape)和类型(Dtype)。张量名字作为张量的唯一标志符，描述了张量是如何计算出来的。张量纬度描述的是张量的纬度信息，比如纬度为零，则张量可以表示为标量。</p>
+<ul>
+<li>运行模型</li>
+</ul>
+<p>会话(Session)是拥有并管理TensorFlow程序运行时所有资源的概念，是TensorFlow的运行模型。当所有计算完成之后，需要关闭会话来帮助系统回收计算资源，否则就可能产生资源泄漏的问题。</p>
+<h3 id="TensorFlow算法的一般流程"><a href="#TensorFlow算法的一般流程" class="headerlink" title="TensorFlow算法的一般流程"></a>TensorFlow算法的一般流程</h3><ul>
+<li>导入/生成样本数据集</li>
+</ul>
+<ul>
+<li>转换和归一化数据</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data = tf.nn.batch_norm_with_global_normalization(...)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>划分样本数据集为训练样本集、测试样本集和验证样本集</li>
+</ul>
+<ul>
+<li>设置机器学习参数（超参数）</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">learning_rate = 0.01</span><br><span class="line">batch_size = 100</span><br><span class="line">iterations = 1000</span><br></pre></td></tr></table></figure>
+<ul>
+<li>初始化变量和占位符</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a_var = tf.constant(42)</span><br><span class="line">x_input = tf.placeholder(tf.float32, [None, input_size])</span><br><span class="line">y_input = tf.placeholder(tf.float32, [None, num_classes])</span><br></pre></td></tr></table></figure>
+<ul>
+<li>定义模型结构</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">y_pred = tf.add(tf.mul(x_input, weight_matrix), b_matrix)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>声明损失函数</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">loss = tf.reduce_mean(tf.square(y_actual - y_pred))</span><br></pre></td></tr></table></figure>
+<ul>
+<li>初始化模型和训练模型</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">with tf.Session(graph=graph) as session:</span><br><span class="line">    ...</span><br><span class="line">    session.run(...)</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+<ul>
+<li>评估机器学习模型</li>
+</ul>
+<ul>
+<li>调优超参数</li>
+</ul>
+<ul>
+<li>发布/预测结果</li>
+</ul>
+<h3 id="声明张量"><a href="#声明张量" class="headerlink" title="声明张量"></a>声明张量</h3><p>TensorFlow的主要数据结构是张量，它用张量来操作计算图。在TensorFlow里可以把变量或者占位符声明为张量。</p>
+<ol>
+<li><p>固定张量</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">row_dim = <span class="number">3</span></span><br><span class="line">col_dim = <span class="number">3</span></span><br><span class="line"><span class="comment"># 零张量</span></span><br><span class="line">zero_tsr = tf.zeros([row_dim, col_dim])</span><br><span class="line"><span class="comment"># 单位张量</span></span><br><span class="line">ones_tsr = tf.ones([row_dim, col_dim])</span><br><span class="line"><span class="comment"># 指定维度的常数填充的张量</span></span><br><span class="line">filled_tsr = tf.fill([row_dim, col_dim], <span class="number">42</span>)</span><br><span class="line"><span class="comment"># 用已知常数张量创建一个张量</span></span><br><span class="line">constant_tsr = tf.constant([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>相似形状的张量</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">zero_similar = tf.zeros_like(constant_tsr)</span><br><span class="line">ones_similar = tf.ones_like(constant_tsr)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>序列张量</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">linear_tsr = tf.linspace(start=<span class="number">0.0</span>, stop=<span class="number">2.0</span>, num=<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>随机张量</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">randunif_tsr = tf.random_uniform([row_dim, col_dim],</span><br><span class="line">                                minval=<span class="number">0</span>, maxval=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">randnorm_tsr = tf.random_normal([row_dim, col_dim],</span><br><span class="line">                               mean=<span class="number">0.0</span>, stddev=<span class="number">1.0</span>)</span><br><span class="line"></span><br><span class="line">rumcnorm_tsr = tf.truncated_normal([row_dim, col_dim],</span><br><span class="line">                              mean=<span class="number">0.0</span>, stddev=<span class="number">1.0</span>)</span><br><span class="line"></span><br><span class="line">shuffled_output = tf.random_shuffle(input_tensor)</span><br><span class="line">cropped_output = tf.random_crop(input_tensor, crop_size)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="使用占位符和变量"><a href="#使用占位符和变量" class="headerlink" title="使用占位符和变量"></a>使用占位符和变量</h3><p>使用TensorFlow计算图的关键工具是占位符和变量，变量是TensorFlow机器学习算法的参数，TensorFlow维护（调整）这些变量的状态来优化机器学习算法。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sess = tf.Session()</span><br><span class="line">first_var = tf.Variable(tf.zeros([<span class="number">2</span>, <span class="number">3</span>]))</span><br><span class="line">sess.run(first_var.initializer)</span><br><span class="line">second_var = tf.Variable(tf.zeros_like(first_var))</span><br><span class="line"><span class="comment"># Depends on first_var</span></span><br><span class="line">sess.run(second_var.initializer)</span><br></pre></td></tr></table></figure>
+<h3 id="操作（计算）矩阵"><a href="#操作（计算）矩阵" class="headerlink" title="操作（计算）矩阵"></a>操作（计算）矩阵</h3><ol>
+<li><p>创建矩阵</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">sess = tf.Session()</span><br><span class="line">identity_matrix = tf.diag([<span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>])</span><br><span class="line">A = tf.truncated_normal([<span class="number">2</span>, <span class="number">3</span>])</span><br><span class="line">B = tf.fill([<span class="number">2</span>, <span class="number">3</span>], <span class="number">5.0</span>)</span><br><span class="line">C = tf.random_uniform([<span class="number">3</span>, <span class="number">2</span>])</span><br><span class="line">D = tf.convert_to_tensor(np.array([[<span class="number">1.</span>, <span class="number">2.</span>, <span class="number">3.</span>], [<span class="number">-3.</span>, <span class="number">-7.</span>, <span class="number">-1.</span>], [<span class="number">0.</span>, <span class="number">5.</span>, <span class="number">0</span><span class="number">-2.</span>]]))</span><br><span class="line">print(sess.run(identity_matrix))</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>矩阵的加法和减法<br><code>print(sess.run(A+B))</code><br>[[3.2625878 4.7152586 3.7038145]<br>[4.4590096 5.09959   4.62294  ]]<br><code>print(sess.run(B-B))</code><br>[[0. 0. 0.]<br>[0. 0. 0.]]</p>
+</li>
+<li><p>矩阵乘法<br><code>print(sess.run(tf.matmul(B, identity_matrix)))</code><br>[[5. 5. 5.]<br>[5. 5. 5.]]</p>
+</li>
+<li><p>矩阵转置<br><code>print(sess.run(tf.transpose(C)))</code><br>[[0.3840685  0.07532799 0.54872775]<br>[0.4346856  0.8683685  0.05251133]]</p>
+</li>
+<li><p>逆矩阵<br><code>print(sess.run(tf.matrix_inverse(D)))</code><br>[[-0.5        -0.5        -0.5       ]<br>[ 0.15789474  0.05263158  0.21052632]<br>[ 0.39473684  0.13157895  0.02631579]]</p>
+</li>
+<li><p>矩阵分解<br><code>print(sess.run(tf.cholesky(identity_matrix)))</code><br>[[1. 0. 0.]<br>[0. 1. 0.]<br>[0. 0. 1.]]</p>
+</li>
+<li><p>矩阵的特征值和特征向量<br><code>print(sess.run(tf.self_adjoint_eig(D)))</code><br>(array([-10.65907521,  -0.22750691,   2.88658212]), array([[ 0.21749542,  0.63250104, -0.74339638],</p>
+<pre><code>[ 0.84526515,  0.2587998 ,  0.46749277],
+[-0.4880805 ,  0.73004459,  0.47834331]]))
+</code></pre></li>
+</ol>
+<h3 id="实现激励函数"><a href="#实现激励函数" class="headerlink" title="实现激励函数"></a>实现激励函数</h3><p>激励函数是使用所有神经网络算法的必备“神器”。激励函数的目的是为了调节权重和误差。在TensorFlow中，激励函数是作用在张量上的非线性操作。</p>
+<ol>
+<li><p>整流线性单元(Rectifier linear unit, ReLU)是神经网络最常用的非线性函数。<br><code>print(sess.run(tf.nn.relu([-3., 3., 10.])))</code></p>
+</li>
+<li><p>ReLU6<br><code>print(sess.run(tf.nn.relu6([-3., 3., 10.])))</code></p>
+</li>
+<li><p>sigmoid函数是最常用的连续、平滑的激励函数。表达式：$\frac{1}{1+e^{-x}}$<br><code>print(sess.run(tf.nn.sigmoid([-1., 0., 1.])))</code></p>
+</li>
+<li><p>双曲正切函数(hyper tangent, tanh)，表达式：<script type="math/tex">\frac{e^x-e^{-x}}{e^x+e^{-x}}</script><br><code>print(sess.run(tf.nn.tanh([-1., 0., 1.])))</code></p>
+</li>
+<li><p>softsign函数，表达式： <script type="math/tex">\frac{x}{(abs(x)+1)}</script><br><code>print(sess.run(tf.nn.softsign([-1., 0., 1.])))</code></p>
+</li>
+<li><p>softplus激励函数是ReLU激励函数的平滑版，表达式为：$log(e^x+1)$<br><code>print(sess.run(tf.nn.softplus([-1., 0., 1.])))</code></p>
+</li>
+<li><p>ELU激励函数(Exponential Linear Unit, ELU)<br><code>print(sess.run(tf.nn.elu([-1., 0., 1.])))</code></p>
+</li>
+</ol>
+<h3 id="读取数据源"><a href="#读取数据源" class="headerlink" title="读取数据源"></a>读取数据源</h3>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2018/08/24/TensorFlow/">TensorFlow机器学习</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">morven</a></p>
+        <p><span>发布时间:</span>2018-08-24, 19:17:15</p>
+        <p><span>最后更新:</span>2018-08-27, 16:31:49</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2018/08/24/TensorFlow/" title="TensorFlow机器学习">http://yoursite.com/2018/08/24/TensorFlow/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/08/24/TensorFlow/　　作者: morven" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2018/08/25/动手学深度学习第一课：从上手到多类分类/">
+                    动手学深度学习第一课：从上手到多类分类
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2018/08/19/编写高质量Objective-C/">
+                    《编写高质量Objective-C》笔记
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#TensorFlow基础"><span class="toc-number">1.</span> <span class="toc-text">TensorFlow基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#TensorFlow的特点"><span class="toc-number">1.1.</span> <span class="toc-text">TensorFlow的特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TensorFlow中的模型"><span class="toc-number">1.2.</span> <span class="toc-text">TensorFlow中的模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TensorFlow算法的一般流程"><span class="toc-number">1.3.</span> <span class="toc-text">TensorFlow算法的一般流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#声明张量"><span class="toc-number">1.4.</span> <span class="toc-text">声明张量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用占位符和变量"><span class="toc-number">1.5.</span> <span class="toc-text">使用占位符和变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#操作（计算）矩阵"><span class="toc-number">1.6.</span> <span class="toc-text">操作（计算）矩阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实现激励函数"><span class="toc-number">1.7.</span> <span class="toc-text">实现激励函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#读取数据源"><span class="toc-number">1.8.</span> <span class="toc-text">读取数据源</span></a></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"TensorFlow机器学习　| Morvenyang2018　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2018/08/25/动手学深度学习第一课：从上手到多类分类/" title="上一篇: 动手学深度学习第一课：从上手到多类分类">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2018/08/19/编写高质量Objective-C/" title="下一篇: 《编写高质量Objective-C》笔记">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/08/25/动手学深度学习第一课：从上手到多类分类/">动手学深度学习第一课：从上手到多类分类</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/24/TensorFlow/">TensorFlow机器学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/19/编写高质量Objective-C/">《编写高质量Objective-C》笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/18/白话区块链/">《白话区块链》笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/18/广告程序化/">《程序化广告实战》笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/17/markDownd公式/">MarkDownd中数学公式整理</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/17/hello-world/">Hello World</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2018 morven
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 6;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>
