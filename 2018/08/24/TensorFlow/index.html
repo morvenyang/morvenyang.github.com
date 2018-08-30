@@ -23,10 +23,13 @@
 <meta property="og:site_name" content="Morvenyang2018">
 <meta property="og:description" content="TensorFlow基础Google公司不仅是大数据和云计算的领导者，在机器学习和深度学习领域也有很好的实践和积累，其内部使用的深度学习框架TensorFlow使深度学习爱好者的学习门槛越来越低。TensorFlow作为一个用于机器智能的开源软件库，是目前深度学习的主流框架之一，广泛应用于学术界与工业界。TensorFlow自开源至今，相继推出了分布式版本、服务器框架、可视化Tensorboar">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-27T08:31:49.450Z">
+<meta property="og:image" content="http://yoursite.com/2018/08/24/TensorFlow/QQ20180830-165702@2x.png">
+<meta property="og:image" content="http://yoursite.com/2018/08/24/TensorFlow/QQ20180830-172920@2x.png">
+<meta property="og:updated_time" content="2018-08-30T09:29:34.241Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TensorFlow机器学习">
 <meta name="twitter:description" content="TensorFlow基础Google公司不仅是大数据和云计算的领导者，在机器学习和深度学习领域也有很好的实践和积累，其内部使用的深度学习框架TensorFlow使深度学习爱好者的学习门槛越来越低。TensorFlow作为一个用于机器智能的开源软件库，是目前深度学习的主流框架之一，广泛应用于学术界与工业界。TensorFlow自开源至今，相继推出了分布式版本、服务器框架、可视化Tensorboar">
+<meta name="twitter:image" content="http://yoursite.com/2018/08/24/TensorFlow/QQ20180830-165702@2x.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -431,7 +434,65 @@
 <li><p>ELU激励函数(Exponential Linear Unit, ELU)<br><code>print(sess.run(tf.nn.elu([-1., 0., 1.])))</code></p>
 </li>
 </ol>
-<h3 id="读取数据源"><a href="#读取数据源" class="headerlink" title="读取数据源"></a>读取数据源</h3>
+<h3 id="读取数据源"><a href="#读取数据源" class="headerlink" title="读取数据源"></a>读取数据源</h3><ol>
+<li><p>鸢尾花卉数据集(Iris data)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line">iris = datasets.load_iris()</span><br><span class="line">print(len(iris.data))</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>出生体重数据(Birth weight data)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">birthdata_url = <span class="string">'https://www.umass.edu/statdata/statdata/data/lowbwt.dat'</span></span><br><span class="line">birth_file = requests.get(birthdata_url)</span><br><span class="line">birth_data = birth_file.text.split(<span class="string">'\r\n'</span>)[<span class="number">5</span>:]</span><br><span class="line">birth_header = [x <span class="keyword">for</span> x <span class="keyword">in</span> birth_data[<span class="number">0</span>].split(<span class="string">''</span>) <span class="keyword">if</span> len(x)&gt;=<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>波士顿房价数据(Boston Housing data)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">housing_url = <span class="string">'https://archive.ics.uci.edu/ml/machine-learning-databases/housing/housing.data'</span></span><br><span class="line">housing_header = [<span class="string">'CRIM'</span>, <span class="string">'ZN'</span>, <span class="string">'INDUS'</span>, <span class="string">'CHAS'</span>, <span class="string">'NOX'</span>, <span class="string">'RM'</span>, </span><br><span class="line">                  <span class="string">'AGE'</span>, <span class="string">'DIS'</span>, <span class="string">'RAD'</span>, <span class="string">'TAX'</span>, <span class="string">'PTRATIO'</span>, <span class="string">'B'</span>,</span><br><span class="line">                 <span class="string">'LSTAT'</span>, <span class="string">'MEDV0'</span>]</span><br><span class="line">housing_file = requests.get(housing_url)</span><br><span class="line"></span><br><span class="line">housing_data = [[float(x) <span class="keyword">for</span> x <span class="keyword">in</span> y.split(<span class="string">' '</span>) <span class="keyword">if</span> len(x)&gt;=<span class="number">1</span>] <span class="keyword">for</span> y <span class="keyword">in</span> housing_file.text.split(<span class="string">'\n'</span>) <span class="keyword">if</span> len(y)&gt;=<span class="number">1</span>]</span><br><span class="line">print(len(housing_data))</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>MNIST手写体字库</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> tensorflow.examples.tutorials.mnist <span class="keyword">import</span> input_data</span><br><span class="line">mnist = input_data.read_data_sets(<span class="string">"MNIST_data/"</span>, one_hot=<span class="keyword">True</span>)</span><br><span class="line">print(len(mnist.train.images))</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>垃圾短信文本数据集</p>
+</li>
+</ol>
+<h3 id="TensorFlow实现损失函数"><a href="#TensorFlow实现损失函数" class="headerlink" title="TensorFlow实现损失函数"></a>TensorFlow实现损失函数</h3><p>损失函数(loss function)对机器学习来讲是非常重要的。它们度量模型输出值与目标值(target)间的差值。</p>
+<ol>
+<li>L2正则损失函数（欧拉损失函数）<br>是预测值与目标值差值的平方和，在目标值附近有更好的曲度，机器学习利用这点收敛，并且离目标越近收敛越慢。</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x_vals = tf.linspace(<span class="number">-1.</span>, <span class="number">1.</span>, <span class="number">500</span>)</span><br><span class="line">target = tf.constant(<span class="number">0.</span>)</span><br><span class="line"></span><br><span class="line">l2_y_vals = tf.square(target - x_vals)</span><br><span class="line">l2_y_out = sess.run(l2_y_vals)</span><br></pre></td></tr></table></figure>
+<ol>
+<li>L1正则损失函数（绝对值损失函数）<br>对差值求绝对值，在目标值附近不平滑，导致算法不能很好地收敛。</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">l1_y_vals = tf.abs(target - x_vals)</span><br><span class="line">l1_y_out = sess.run(l1_y_vals)</span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>Pseudo-Huber损失函数<br>是Huber损失函数的连续、平滑估计，试图利用L1和L2正则削减极值处的陡峭，使得目标值附近连续。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">delta1 = tf.constant(<span class="number">0.25</span>)</span><br><span class="line">phuber1_y_vals = tf.multiply(tf.square(delta1), tf.sqrt(<span class="number">1.</span> + </span><br><span class="line">                             tf.square((target - x_vals) / delta1)) - <span class="number">1.</span>)</span><br><span class="line">phuber1_y_out = sess.run(phuber1_y_vals)</span><br><span class="line">delta2 = tf.constant(<span class="number">5.</span>)</span><br><span class="line">phuber2_y_vals = tf.multiply(tf.square(delta2), tf.sqrt(<span class="number">1.</span> +</span><br><span class="line">                             tf.square((target - x_vals) / delta2)) - <span class="number">1.</span>)</span><br><span class="line">phuber2_y_out = sess.run(phuber2_y_vals)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>分类损失函数<br>用来评估预测分类结果。</p>
+</li>
+<li><p>Hinge损失函数<br>主要用来评估支持向量机算法，有时也用来评估神经网络算法。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">x_vals = tf.linspace(<span class="number">-3.</span>, <span class="number">5.</span>, <span class="number">500</span>)</span><br><span class="line">target = tf.constant(<span class="number">1.</span>)</span><br><span class="line">targets = tf.fill([<span class="number">500</span>,], <span class="number">1.</span>)</span><br><span class="line"></span><br><span class="line">hinge_y_vals = tf.maximum(<span class="number">0.</span>, <span class="number">1.</span> - tf.multiply(target, x_vals))</span><br><span class="line">hinge_y_out = sess.run(hinge_y_vals)</span><br><span class="line">print(hinge_y_out)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>两类交叉熵损失函数(Cross-entropy loss)<br>有时也作为逻辑损失函数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">xentropy_y_vals = - tf.multiply(target, tf.log(x_vals)) - tf.multiply((<span class="number">1.</span> - target), </span><br><span class="line">                                                                      tf.log(<span class="number">1.</span> - x_vals))</span><br><span class="line">xentropy_y_out = sess.run(xentropy_y_vals)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Sigmoid交叉熵损失函数(Sigmoid cross entropy loss)<br>先把x_vals值通过sigmoid函数转换，再计算交叉熵损失。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xentropy_sigmoid_y_vals = tf.nn.sigmoid_cross_entropy_with_logits(logits=x_vals, labels=targets)</span><br><span class="line">xentropy_sigmoid_y_out = sess.run(xentropy_sigmoid_y_vals)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>加权交叉熵损失函数(Weighted corss entropy loss)<br>Sigmoid交叉熵损失函数的加权，对正目标加权。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">weight = tf.constant(<span class="number">0.5</span>)</span><br><span class="line">xentropy_weighted_y_vals = tf.nn.weighted_cross_entropy_with_logits(logits=x_vals, </span><br><span class="line">                                                                    targets=targets, pos_weight=weight)</span><br><span class="line">xentropy_weighted_y_out = sess.run(xentropy_weighted_y_vals)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Softmax交叉熵损失函数(Softmax corss-entropy loss)<br>作用于非归一化的输出结果，只针对单个目标分类的计算损失。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">unscaled_logits = tf.constant([[<span class="number">1.</span>, <span class="number">-3.</span>, <span class="number">10.</span>]])</span><br><span class="line">target_dist = tf.constant([[<span class="number">0.1</span>, <span class="number">0.02</span>, <span class="number">0.88</span>]])</span><br><span class="line">softmax_xentropy = tf.nn.softmax_cross_entropy_with_logits(logits=unscaled_logits, labels=target_dist)</span><br><span class="line">print(sess.run(softmax_xentropy))</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>稀疏Softmax交叉熵损失函数(Sparse softmax cross-entropy loss)<br>把目标分类为true的转化成index，而Softmax交叉熵损失函数将目标转成概率分布。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sparse_target_dist = tf.constant([<span class="number">2</span>])</span><br><span class="line">sparse_xentropy = tf.nn.sparse_softmax_cross_entropy_with_logits(logits=unscaled_logits, labels=sparse_target_dist)</span><br><span class="line">print(sess.run(sparse_xentropy))</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>用matplotlib绘制回归算法的损失函数<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">x_array = sess.run(x_vals)</span><br><span class="line">plt.plot(x_array, l2_y_out, <span class="string">'b-'</span>, label=<span class="string">'L2 Loss'</span>)</span><br><span class="line">plt.plot(x_array, l1_y_out, <span class="string">'r--'</span>, label=<span class="string">'L1 Loss'</span>)</span><br><span class="line">plt.plot(x_array, phuber1_y_out, <span class="string">'k-'</span>, label=<span class="string">'P-Huber Loss (0.25)'</span>)</span><br><span class="line">plt.plot(x_array, phuber2_y_out, <span class="string">'g:'</span>, label=<span class="string">'P-Huber Loss (5.0)'</span>)</span><br><span class="line">plt.ylim(<span class="number">-0.2</span>, <span class="number">0.4</span>)</span><br><span class="line">plt.legend(loc=<span class="string">'lower right'</span>, prop=&#123;<span class="string">'size'</span>: <span class="number">11</span>&#125;)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure></p>
+<div align="center">
+    <img src="/2018/08/24/TensorFlow/QQ20180830-165702@2x.png" width="400">
+</div>
+
+<p>用matplotlib绘制各种分类算法损失函数<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">x_array = sess.run(x_vals)</span><br><span class="line">plt.plot(x_array, hinge_y_out, <span class="string">'b-'</span>, label=<span class="string">'Hinge Loss'</span>)</span><br><span class="line">plt.plot(x_array, xentropy_y_out, <span class="string">'r--'</span>, label=<span class="string">'Cross Entropy Loss'</span>)</span><br><span class="line">plt.plot(x_array, xentropy_sigmoid_y_out, <span class="string">'k-.'</span>, label=<span class="string">'Cross Entropy Sigmoid Loss'</span>)</span><br><span class="line">plt.plot(x_array, xentropy_weighted_y_out, <span class="string">'g:'</span>, label=<span class="string">'Weighted Cross Entropy Loss(x0.5)'</span>)</span><br><span class="line">plt.ylim(<span class="number">-1.5</span>, <span class="number">3</span>)</span><br><span class="line">plt.legend(loc=<span class="string">'lower right'</span>, prop=&#123;<span class="string">'size'</span>: <span class="number">11</span>&#125;)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure></p>
+<div align="center">
+    <img src="/2018/08/24/TensorFlow/QQ20180830-172920@2x.png" width="400">
+</div>
       
     </div>
     
@@ -442,7 +503,7 @@
         <p><span>本文标题:</span><a href="/2018/08/24/TensorFlow/">TensorFlow机器学习</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">morven</a></p>
         <p><span>发布时间:</span>2018-08-24, 19:17:15</p>
-        <p><span>最后更新:</span>2018-08-27, 16:31:49</p>
+        <p><span>最后更新:</span>2018-08-30, 17:29:34</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/08/24/TensorFlow/" title="TensorFlow机器学习">http://yoursite.com/2018/08/24/TensorFlow/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/08/24/TensorFlow/　　作者: morven" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -478,7 +539,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#TensorFlow基础"><span class="toc-number">1.</span> <span class="toc-text">TensorFlow基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#TensorFlow的特点"><span class="toc-number">1.1.</span> <span class="toc-text">TensorFlow的特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TensorFlow中的模型"><span class="toc-number">1.2.</span> <span class="toc-text">TensorFlow中的模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TensorFlow算法的一般流程"><span class="toc-number">1.3.</span> <span class="toc-text">TensorFlow算法的一般流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#声明张量"><span class="toc-number">1.4.</span> <span class="toc-text">声明张量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用占位符和变量"><span class="toc-number">1.5.</span> <span class="toc-text">使用占位符和变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#操作（计算）矩阵"><span class="toc-number">1.6.</span> <span class="toc-text">操作（计算）矩阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实现激励函数"><span class="toc-number">1.7.</span> <span class="toc-text">实现激励函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#读取数据源"><span class="toc-number">1.8.</span> <span class="toc-text">读取数据源</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#TensorFlow基础"><span class="toc-number">1.</span> <span class="toc-text">TensorFlow基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#TensorFlow的特点"><span class="toc-number">1.1.</span> <span class="toc-text">TensorFlow的特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TensorFlow中的模型"><span class="toc-number">1.2.</span> <span class="toc-text">TensorFlow中的模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TensorFlow算法的一般流程"><span class="toc-number">1.3.</span> <span class="toc-text">TensorFlow算法的一般流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#声明张量"><span class="toc-number">1.4.</span> <span class="toc-text">声明张量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用占位符和变量"><span class="toc-number">1.5.</span> <span class="toc-text">使用占位符和变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#操作（计算）矩阵"><span class="toc-number">1.6.</span> <span class="toc-text">操作（计算）矩阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实现激励函数"><span class="toc-number">1.7.</span> <span class="toc-text">实现激励函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#读取数据源"><span class="toc-number">1.8.</span> <span class="toc-text">读取数据源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TensorFlow实现损失函数"><span class="toc-number">1.9.</span> <span class="toc-text">TensorFlow实现损失函数</span></a></li></ol></li></ol>
         
     </div>
     <style>

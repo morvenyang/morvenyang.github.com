@@ -559,7 +559,65 @@
 <li><p>ELU激励函数(Exponential Linear Unit, ELU)<br><code>print(sess.run(tf.nn.elu([-1., 0., 1.])))</code></p>
 </li>
 </ol>
-<h3 id="读取数据源"><a href="#读取数据源" class="headerlink" title="读取数据源"></a>读取数据源</h3>
+<h3 id="读取数据源"><a href="#读取数据源" class="headerlink" title="读取数据源"></a>读取数据源</h3><ol>
+<li><p>鸢尾花卉数据集(Iris data)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line">iris = datasets.load_iris()</span><br><span class="line">print(len(iris.data))</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>出生体重数据(Birth weight data)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">birthdata_url = <span class="string">'https://www.umass.edu/statdata/statdata/data/lowbwt.dat'</span></span><br><span class="line">birth_file = requests.get(birthdata_url)</span><br><span class="line">birth_data = birth_file.text.split(<span class="string">'\r\n'</span>)[<span class="number">5</span>:]</span><br><span class="line">birth_header = [x <span class="keyword">for</span> x <span class="keyword">in</span> birth_data[<span class="number">0</span>].split(<span class="string">''</span>) <span class="keyword">if</span> len(x)&gt;=<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>波士顿房价数据(Boston Housing data)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">housing_url = <span class="string">'https://archive.ics.uci.edu/ml/machine-learning-databases/housing/housing.data'</span></span><br><span class="line">housing_header = [<span class="string">'CRIM'</span>, <span class="string">'ZN'</span>, <span class="string">'INDUS'</span>, <span class="string">'CHAS'</span>, <span class="string">'NOX'</span>, <span class="string">'RM'</span>, </span><br><span class="line">                  <span class="string">'AGE'</span>, <span class="string">'DIS'</span>, <span class="string">'RAD'</span>, <span class="string">'TAX'</span>, <span class="string">'PTRATIO'</span>, <span class="string">'B'</span>,</span><br><span class="line">                 <span class="string">'LSTAT'</span>, <span class="string">'MEDV0'</span>]</span><br><span class="line">housing_file = requests.get(housing_url)</span><br><span class="line"></span><br><span class="line">housing_data = [[float(x) <span class="keyword">for</span> x <span class="keyword">in</span> y.split(<span class="string">' '</span>) <span class="keyword">if</span> len(x)&gt;=<span class="number">1</span>] <span class="keyword">for</span> y <span class="keyword">in</span> housing_file.text.split(<span class="string">'\n'</span>) <span class="keyword">if</span> len(y)&gt;=<span class="number">1</span>]</span><br><span class="line">print(len(housing_data))</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>MNIST手写体字库</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> tensorflow.examples.tutorials.mnist <span class="keyword">import</span> input_data</span><br><span class="line">mnist = input_data.read_data_sets(<span class="string">"MNIST_data/"</span>, one_hot=<span class="keyword">True</span>)</span><br><span class="line">print(len(mnist.train.images))</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>垃圾短信文本数据集</p>
+</li>
+</ol>
+<h3 id="TensorFlow实现损失函数"><a href="#TensorFlow实现损失函数" class="headerlink" title="TensorFlow实现损失函数"></a>TensorFlow实现损失函数</h3><p>损失函数(loss function)对机器学习来讲是非常重要的。它们度量模型输出值与目标值(target)间的差值。</p>
+<ol>
+<li>L2正则损失函数（欧拉损失函数）<br>是预测值与目标值差值的平方和，在目标值附近有更好的曲度，机器学习利用这点收敛，并且离目标越近收敛越慢。</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x_vals = tf.linspace(<span class="number">-1.</span>, <span class="number">1.</span>, <span class="number">500</span>)</span><br><span class="line">target = tf.constant(<span class="number">0.</span>)</span><br><span class="line"></span><br><span class="line">l2_y_vals = tf.square(target - x_vals)</span><br><span class="line">l2_y_out = sess.run(l2_y_vals)</span><br></pre></td></tr></table></figure>
+<ol>
+<li>L1正则损失函数（绝对值损失函数）<br>对差值求绝对值，在目标值附近不平滑，导致算法不能很好地收敛。</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">l1_y_vals = tf.abs(target - x_vals)</span><br><span class="line">l1_y_out = sess.run(l1_y_vals)</span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>Pseudo-Huber损失函数<br>是Huber损失函数的连续、平滑估计，试图利用L1和L2正则削减极值处的陡峭，使得目标值附近连续。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">delta1 = tf.constant(<span class="number">0.25</span>)</span><br><span class="line">phuber1_y_vals = tf.multiply(tf.square(delta1), tf.sqrt(<span class="number">1.</span> + </span><br><span class="line">                             tf.square((target - x_vals) / delta1)) - <span class="number">1.</span>)</span><br><span class="line">phuber1_y_out = sess.run(phuber1_y_vals)</span><br><span class="line">delta2 = tf.constant(<span class="number">5.</span>)</span><br><span class="line">phuber2_y_vals = tf.multiply(tf.square(delta2), tf.sqrt(<span class="number">1.</span> +</span><br><span class="line">                             tf.square((target - x_vals) / delta2)) - <span class="number">1.</span>)</span><br><span class="line">phuber2_y_out = sess.run(phuber2_y_vals)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>分类损失函数<br>用来评估预测分类结果。</p>
+</li>
+<li><p>Hinge损失函数<br>主要用来评估支持向量机算法，有时也用来评估神经网络算法。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">x_vals = tf.linspace(<span class="number">-3.</span>, <span class="number">5.</span>, <span class="number">500</span>)</span><br><span class="line">target = tf.constant(<span class="number">1.</span>)</span><br><span class="line">targets = tf.fill([<span class="number">500</span>,], <span class="number">1.</span>)</span><br><span class="line"></span><br><span class="line">hinge_y_vals = tf.maximum(<span class="number">0.</span>, <span class="number">1.</span> - tf.multiply(target, x_vals))</span><br><span class="line">hinge_y_out = sess.run(hinge_y_vals)</span><br><span class="line">print(hinge_y_out)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>两类交叉熵损失函数(Cross-entropy loss)<br>有时也作为逻辑损失函数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">xentropy_y_vals = - tf.multiply(target, tf.log(x_vals)) - tf.multiply((<span class="number">1.</span> - target), </span><br><span class="line">                                                                      tf.log(<span class="number">1.</span> - x_vals))</span><br><span class="line">xentropy_y_out = sess.run(xentropy_y_vals)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Sigmoid交叉熵损失函数(Sigmoid cross entropy loss)<br>先把x_vals值通过sigmoid函数转换，再计算交叉熵损失。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xentropy_sigmoid_y_vals = tf.nn.sigmoid_cross_entropy_with_logits(logits=x_vals, labels=targets)</span><br><span class="line">xentropy_sigmoid_y_out = sess.run(xentropy_sigmoid_y_vals)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>加权交叉熵损失函数(Weighted corss entropy loss)<br>Sigmoid交叉熵损失函数的加权，对正目标加权。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">weight = tf.constant(<span class="number">0.5</span>)</span><br><span class="line">xentropy_weighted_y_vals = tf.nn.weighted_cross_entropy_with_logits(logits=x_vals, </span><br><span class="line">                                                                    targets=targets, pos_weight=weight)</span><br><span class="line">xentropy_weighted_y_out = sess.run(xentropy_weighted_y_vals)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Softmax交叉熵损失函数(Softmax corss-entropy loss)<br>作用于非归一化的输出结果，只针对单个目标分类的计算损失。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">unscaled_logits = tf.constant([[<span class="number">1.</span>, <span class="number">-3.</span>, <span class="number">10.</span>]])</span><br><span class="line">target_dist = tf.constant([[<span class="number">0.1</span>, <span class="number">0.02</span>, <span class="number">0.88</span>]])</span><br><span class="line">softmax_xentropy = tf.nn.softmax_cross_entropy_with_logits(logits=unscaled_logits, labels=target_dist)</span><br><span class="line">print(sess.run(softmax_xentropy))</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>稀疏Softmax交叉熵损失函数(Sparse softmax cross-entropy loss)<br>把目标分类为true的转化成index，而Softmax交叉熵损失函数将目标转成概率分布。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sparse_target_dist = tf.constant([<span class="number">2</span>])</span><br><span class="line">sparse_xentropy = tf.nn.sparse_softmax_cross_entropy_with_logits(logits=unscaled_logits, labels=sparse_target_dist)</span><br><span class="line">print(sess.run(sparse_xentropy))</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>用matplotlib绘制回归算法的损失函数<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">x_array = sess.run(x_vals)</span><br><span class="line">plt.plot(x_array, l2_y_out, <span class="string">'b-'</span>, label=<span class="string">'L2 Loss'</span>)</span><br><span class="line">plt.plot(x_array, l1_y_out, <span class="string">'r--'</span>, label=<span class="string">'L1 Loss'</span>)</span><br><span class="line">plt.plot(x_array, phuber1_y_out, <span class="string">'k-'</span>, label=<span class="string">'P-Huber Loss (0.25)'</span>)</span><br><span class="line">plt.plot(x_array, phuber2_y_out, <span class="string">'g:'</span>, label=<span class="string">'P-Huber Loss (5.0)'</span>)</span><br><span class="line">plt.ylim(<span class="number">-0.2</span>, <span class="number">0.4</span>)</span><br><span class="line">plt.legend(loc=<span class="string">'lower right'</span>, prop=&#123;<span class="string">'size'</span>: <span class="number">11</span>&#125;)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure></p>
+<div align="center">
+    <img src="/2018/08/24/TensorFlow/QQ20180830-165702@2x.png" width="400">
+</div>
+
+<p>用matplotlib绘制各种分类算法损失函数<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">x_array = sess.run(x_vals)</span><br><span class="line">plt.plot(x_array, hinge_y_out, <span class="string">'b-'</span>, label=<span class="string">'Hinge Loss'</span>)</span><br><span class="line">plt.plot(x_array, xentropy_y_out, <span class="string">'r--'</span>, label=<span class="string">'Cross Entropy Loss'</span>)</span><br><span class="line">plt.plot(x_array, xentropy_sigmoid_y_out, <span class="string">'k-.'</span>, label=<span class="string">'Cross Entropy Sigmoid Loss'</span>)</span><br><span class="line">plt.plot(x_array, xentropy_weighted_y_out, <span class="string">'g:'</span>, label=<span class="string">'Weighted Cross Entropy Loss(x0.5)'</span>)</span><br><span class="line">plt.ylim(<span class="number">-1.5</span>, <span class="number">3</span>)</span><br><span class="line">plt.legend(loc=<span class="string">'lower right'</span>, prop=&#123;<span class="string">'size'</span>: <span class="number">11</span>&#125;)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure></p>
+<div align="center">
+    <img src="/2018/08/24/TensorFlow/QQ20180830-172920@2x.png" width="400">
+</div>
       
     </div>
     
@@ -1233,6 +1291,69 @@
 </div>
 
 
+<h2 id="第3章-区块链骨骼：密码算法"><a href="#第3章-区块链骨骼：密码算法" class="headerlink" title="第3章 区块链骨骼：密码算法"></a>第3章 区块链骨骼：密码算法</h2><h3 id="哈希算法"><a href="#哈希算法" class="headerlink" title="哈希算法"></a>哈希算法</h3><p>哈希算法在区块链系统中的应用很广泛：比特币使用哈希算法通过公钥计算出了钱包地址、区块头以及交易事务的哈希值，梅克尔树结构本身就是一棵哈希树，就连挖矿算法都是使用哈希值难度匹配。</p>
+<h4 id="1-什么是哈希计算"><a href="#1-什么是哈希计算" class="headerlink" title="1. 什么是哈希计算"></a>1. 什么是哈希计算</h4><p>密码学上的哈希计算方法具有以下性质：</p>
+<ul>
+<li>函数的输入可以是任意长的字符串；</li>
+</ul>
+<ul>
+<li>函数的输出是固定长度的；</li>
+</ul>
+<ul>
+<li>函数的计算过程是有效率的。</li>
+</ul>
+<p>为了保证安全性，必须满足以下3个条件：</p>
+<ul>
+<li><p>抗冲突(collision-resistance)<br>不同的输入不能产生相同的输出。</p>
+</li>
+<li><p>信息隐藏(information hiding)<br>如果知道了哈希函数的输出，不可能逆向推导出输入。</p>
+</li>
+<li><p>可隐匿性(puzzle friendly)<br>只要输入的部分足够随机，在足够合理的时间内都将不可能破解。</p>
+</li>
+</ul>
+<h4 id="2-哈希算法的种类"><a href="#2-哈希算法的种类" class="headerlink" title="2. 哈希算法的种类"></a>2. 哈希算法的种类</h4><p>密码学中常用的哈希算法有MD5、SHA1、SHA2、SHA256、SHA512、SHA3、RIPEMD160.</p>
+<ul>
+<li><p>MD5(Message Digest Algorithm 5)<br>输入不定长度信息，输出固定长度128bits的算法。目前该算法已被证明是一种不安全的算法，2004年被王晓云教授破解。</p>
+</li>
+<li><p>SHA1<br>在许多安全协议中广为使用，包括TLS和SSL。2017年2月，Google攻破SHA1.</p>
+</li>
+<li><p>SHA2<br>SHA算法家族的第二代，支持了更长的摘要信息输出，主要有SHA224、SHA256、SHA384和SHA512。</p>
+</li>
+<li><p>SHA3<br>SHA算法家族的第三代。</p>
+</li>
+<li><p>RIPEMD-160<br>160位加密哈希函数，旨在替代128位哈希函数MD4、MD5和RIPEMD-128.</p>
+</li>
+</ul>
+<h4 id="3-区块链中的哈希算法"><a href="#3-区块链中的哈希算法" class="headerlink" title="3. 区块链中的哈希算法"></a>3. 区块链中的哈希算法</h4><ul>
+<li><p>区块哈希<br>对区块头进行哈希计算，得出某个区块的哈希值，用这个哈希值可以唯一确定某一个区块，相当于给区块设定了一个身份证号，而区块与区块之间就是通过这个身份证号进行串联，从而形成了一个区块链的结构。</p>
+</li>
+<li><p>梅克尔树<br>既能用于校验区块数据的完整性，也能对SPV钱包进行支付验证。通过梅克尔树，我们能知道信息是否被篡改，还能知道是第几页或者第几块的信息被篡改。</p>
+</li>
+</ul>
+<h3 id="公开密钥算法"><a href="#公开密钥算法" class="headerlink" title="公开密钥算法"></a>公开密钥算法</h3><h4 id="1-两把钥匙：公钥和私钥"><a href="#1-两把钥匙：公钥和私钥" class="headerlink" title="1. 两把钥匙：公钥和私钥"></a>1. 两把钥匙：公钥和私钥</h4><p>公钥和私钥是现代密码学分支非对称性加密里面的名词，对于一段需要保护的信息，通常使用公钥加密，用私钥解密，这种加密方法也称为公开密钥算法。</p>
+<h4 id="2-RSA算法"><a href="#2-RSA算法" class="headerlink" title="2. RSA算法"></a>2. RSA算法</h4><p>RSA加密算法是最常见的非对称加密算法。它既能用于加密，也能用于数字签名，是目前最流行的公开密钥算法。RSA安全基于大质数分解的难度，RSA的公钥和私钥是一对大质数，从一个公钥和密文恢复明文的难度，等价于分解两个大质数之积，这是公认的数学难题。</p>
+<p>RSA的缺点：</p>
+<ul>
+<li>产生密钥很麻烦，受限于质数产生的技术；</li>
+</ul>
+<ul>
+<li>分组长度太大，运算代价高，速度慢。</li>
+</ul>
+<h4 id="3-椭圆曲线密码算法"><a href="#3-椭圆曲线密码算法" class="headerlink" title="3. 椭圆曲线密码算法"></a>3. 椭圆曲线密码算法</h4><p>标准的椭圆曲线方程：$y^2=x^3+ax+b$<br>椭圆曲线密码算法是基于椭圆曲线数学的一种公钥密码算法，其主要的安全性在于利用了椭圆曲线离散对数问题的困难性。<br>椭圆曲线密码算法实现了数据加解密、数字签名和身份认证等功能，该技术具有安全性高、生成公私钥方便、处理速度快和存储空间小等方面的优势。</p>
+<h3 id="编码-解码算法"><a href="#编码-解码算法" class="headerlink" title="编码/解码算法"></a>编码/解码算法</h3><h4 id="1-Base64"><a href="#1-Base64" class="headerlink" title="1. Base64"></a>1. Base64</h4><p>一种用64个字符来表示任意二进制数据的方法，通常exe、jpg、pdf等文件都是二进制文件，用文本编辑器打开都是乱码，可以将二进制编码成字符串的格式，这样可以将二进制文件用文本打开查看。由大小写字母（52个）、 0～9数字（9个）、+、/组成</p>
+<p>Base64编码主要用在传输、存储、表示二进制等领域，还可以用来加密。</p>
+<h4 id="2-Base58"><a href="#2-Base58" class="headerlink" title="2. Base58"></a>2. Base58</h4><p>Base58是基于58个字母和数字组成的。</p>
+<p>相对于Base58不包括以下Base64的字符：<br>数字0，大写字母O，大写字母I，小写字母l，+与/。</p>
+<h4 id="3-Base58Check"><a href="#3-Base58Check" class="headerlink" title="3. Base58Check"></a>3. Base58Check</h4><p>在二进制数据的传输过程中，为了防止数据传输的错误，保护数据安全，通常会加一个校验码，通过校验码的配合可以发现数据是否被破坏或者是否在发送时输入错误了。Base58Check就是Base58加上校验码，在比特币系统中生成钱包地址的时候就使用到了这种编码形式。</p>
+<h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><ul>
+<li>账户地址生成</li>
+</ul>
+<ul>
+<li>价值转移保卫</li>
+</ul>
+<ul>
+<li>完整性证明</li>
+</ul>
 <p><script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.6.5/flowchart.min.js"></script><textarea id="flowchart-0-code" style="display: none">op1=>operation: 账房先生
 io=>inputoutput: 账本
 
