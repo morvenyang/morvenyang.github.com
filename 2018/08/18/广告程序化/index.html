@@ -31,7 +31,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/08/18/广告程序化/QQ20180804-094348@2x.png">
 <meta property="og:image" content="http://yoursite.com/2018/08/18/广告程序化/QQ20180804-101525@2x.png">
 <meta property="og:image" content="http://yoursite.com/2018/08/18/广告程序化/QQ20180804-102519@2x.png">
-<meta property="og:updated_time" content="2018-08-18T03:17:01.834Z">
+<meta property="og:updated_time" content="2018-09-02T02:53:11.111Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《程序化广告实战》笔记">
 <meta name="twitter:description" content="程序化广告的前世今生1. 常见的广告形式及业态 搜索引擎广告 SEM SEO PPC 展示类广告：文字链接、按钮广告、通栏/横幅广告、“画中画”广告、竖栏/摩天楼广告、焦点图（幻灯片轮播）广告、悬浮广告、对联广告、跨栏广告、背投/弹出广告、插屏/全屏广告、弹出视频、视频贴片广告、视频暂停广告、角标广告、富媒体广告、全页包装广告 原生广告：信息流 社交广告：社会化  2. 结算方式 CPT(Cos">
@@ -192,7 +192,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Objective-C/">Objective-C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TensorFlow/">TensorFlow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markDownd-数学公式/">markDownd 数学公式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/区块链/">区块链</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C语言/">C语言</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Objective-C/">Objective-C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TensorFlow/">TensorFlow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markDownd-数学公式/">markDownd 数学公式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/区块链/">区块链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数学/">数学</a></li></ul>
                     </div>
                 </section>
                 
@@ -419,6 +419,84 @@
 <li>数据运用创造收益</li>
 </ul>
 <p>3) DMP系统的层次及架构<br><img src="/2018/08/18/广告程序化/./QQ20180804-102519@2x.png" alt=""></p>
+<h3 id="监测注意要点"><a href="#监测注意要点" class="headerlink" title="监测注意要点"></a>监测注意要点</h3><h4 id="1-视频广告投放TA浓度KPI注意事项"><a href="#1-视频广告投放TA浓度KPI注意事项" class="headerlink" title="1. 视频广告投放TA浓度KPI注意事项"></a>1. 视频广告投放TA浓度KPI注意事项</h4><p>TA(Target Audience，广告目标受众)，广告投放目标人群及对象。<br>TA浓度(TA%)的简单理解可以是一次广告投放下来，广告被多少目标人群收看，或者说覆盖了多少目标人群，即广告投放曝光的人数中目标人群的比率。</p>
+<ul>
+<li>GRP<br>Gross Rating Point/Gross Reach Point，总收视率/总收看率，又称毛点评率<br>GRP(%) = Reach(目标人群达到率) x Average Frequency(目标人群收看广告的平均次数) x 100</li>
+</ul>
+<ul>
+<li>CPRP<br>Cost Per Reach Point, 每个GRP要多少钱。<br>CPRP = Cost(广告花费) / GRP</li>
+</ul>
+<ul>
+<li><p>IGRP<br>Internet Gross Rating Point<br>iGRP(%) = Reach x Average Frequency x 100 = (TA UV / TA Universe) x (TA PV / TA UV) x 100</p>
+</li>
+<li><p>TA Reach<br>TA Reach = 目标城市目标人群看到广告人数(TA UV) / 目标城市目标人群总数(TA Universe)</p>
+</li>
+</ul>
+<ul>
+<li>TA N+Reach<br>N茨及N次以上收看广告的目标人群到达率。<br>TA N+Reach = 目标城市目标人群看到“N次及N次以上”广告的人数（N+TAUV）/ 目标城市目标人群总数(TA Universe)</li>
+</ul>
+<ul>
+<li>TA% (TA浓度)<br>广告投放曝光的人数中目标人群所占比例。<br>TA%(TA浓度) = TAUV / TA Universe</li>
+</ul>
+<h4 id="2-广告可见性IAB规范"><a href="#2-广告可见性IAB规范" class="headerlink" title="2. 广告可见性IAB规范"></a>2. 广告可见性IAB规范</h4><p>根据MRC(Media Rating Council)的定义：Banner广告需要至少有50%的像素面积在屏幕上展示1秒以上，才能被视为“可见”的广告展示。</p>
+<p>广告可见性测量到三个先决条件：</p>
+<ul>
+<li>Safe Iframe</li>
+</ul>
+<ul>
+<li>page geometry(页面坐标)</li>
+</ul>
+<ul>
+<li>browser optimization(浏览器优化引擎)</li>
+</ul>
+<p>广告可见性测量的具体方法：</p>
+<ul>
+<li>浏览器内广告的相对坐标</li>
+</ul>
+<ul>
+<li>屏幕内广告相对坐标</li>
+</ul>
+<ul>
+<li>鼠标坐标，屏幕顶点与广告坐标的夹角余弦最大值</li>
+</ul>
+<ul>
+<li>浏览器CPU负载计算</li>
+</ul>
+<p>影响因素：</p>
+<ul>
+<li>广告位在页面中的位置</li>
+</ul>
+<ul>
+<li>广告位尺寸</li>
+</ul>
+<ul>
+<li>不同行业的内容页也不同</li>
+</ul>
+<ul>
+<li>首页（频道首页）及文章内容页也不同</li>
+</ul>
+<h4 id="3-品牌安全"><a href="#3-品牌安全" class="headerlink" title="3. 品牌安全"></a>3. 品牌安全</h4><p>品牌安全(Brand Safety)是近来品牌广告主（尤其是国际大品牌的客户）时常关注的。</p>
+<ul>
+<li>推动力动因<br>品牌广告主比较在意广告传播的美誉度，不希望广告被展示在与产品服务及品牌形象相悖的媒体环境中。</li>
+</ul>
+<ul>
+<li>常见模式<br>广告投放后的验证报告、广告投放环节（Bid前，Bid后）</li>
+</ul>
+<ul>
+<li>机制及现状<br>品牌安全服务主要通过技术手段监测广告曝光时的媒体内容的URL，以及同时抓取页面中的内容全文。<br>目前因技术成熟度（是否所有URL都能被分析、分词的准确性、标签的合理性及同广告主的匹配性等问题）、网络环境等问题，导致目前品牌安全的服务还不是很稳定，且大部分只能监测PC上的部分媒体环境。</li>
+</ul>
+<h4 id="4-程序化广告中监测GAP注意事项"><a href="#4-程序化广告中监测GAP注意事项" class="headerlink" title="4. 程序化广告中监测GAP注意事项"></a>4. 程序化广告中监测GAP注意事项</h4><ul>
+<li>地域GAP<br>GAP即差距、差异，常常指广告投放观测的数据同第三方监测或广告主观测到数据的差异。<br>广告主给媒体结算，一般都是按照第三方监测的数据结果进行的。<br>广告主要求的地域定向，往往就是按不同地域、不同的价格及完成量来结算的，一般不会不分地域而按总量来结算，尤其是中视频广告领域。<br>广告主严格要求不同地域的曝光量，尤其是视频广告。<br>地域GAP的成因：地域GAP是因策略路由导致的（我们常称之为IP漂移）。</li>
+</ul>
+<ul>
+<li>结算方式的坑</li>
+</ul>
+<ul>
+<li>PDB中的损耗问题</li>
+</ul>
+<ul>
+<li>移动App端Banner投放的坑<br>频次的监测问题、移动App推广归因分析的坑</li>
+</ul>
 
       
     </div>
@@ -430,7 +508,7 @@
         <p><span>本文标题:</span><a href="/2018/08/18/广告程序化/">《程序化广告实战》笔记</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">morven</a></p>
         <p><span>发布时间:</span>2018-08-18, 10:32:42</p>
-        <p><span>最后更新:</span>2018-08-18, 11:17:01</p>
+        <p><span>最后更新:</span>2018-09-02, 10:53:11</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/08/18/广告程序化/" title="《程序化广告实战》笔记">http://yoursite.com/2018/08/18/广告程序化/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/08/18/广告程序化/　　作者: morven" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -466,7 +544,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#程序化广告的前世今生"><span class="toc-number">1.</span> <span class="toc-text">程序化广告的前世今生</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-常见的广告形式及业态"><span class="toc-number">1.1.</span> <span class="toc-text">1. 常见的广告形式及业态</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-结算方式"><span class="toc-number">1.2.</span> <span class="toc-text">2. 结算方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-广告行业上下游大体分布"><span class="toc-number">1.3.</span> <span class="toc-text">3. 广告行业上下游大体分布</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-程序化广告的概念及发展历程"><span class="toc-number">1.4.</span> <span class="toc-text">4. 程序化广告的概念及发展历程</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#程序化广告基础"><span class="toc-number">2.</span> <span class="toc-text">程序化广告基础</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-程序化广告4种典型模式"><span class="toc-number">2.1.</span> <span class="toc-text">1. 程序化广告4种典型模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-接口规范"><span class="toc-number">2.2.</span> <span class="toc-text">2. 接口规范</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-程序化购买-投放的关键特征"><span class="toc-number">2.3.</span> <span class="toc-text">3. 程序化购买/投放的关键特征</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#程序化广告中的大数据基础"><span class="toc-number">3.</span> <span class="toc-text">程序化广告中的大数据基础</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-人的唯一性标识"><span class="toc-number">3.1.</span> <span class="toc-text">1. 人的唯一性标识</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-受众数据及来源"><span class="toc-number">3.2.</span> <span class="toc-text">2. 受众数据及来源</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-大数据管理平台"><span class="toc-number">3.3.</span> <span class="toc-text">3. 大数据管理平台</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#程序化广告的前世今生"><span class="toc-number">1.</span> <span class="toc-text">程序化广告的前世今生</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-常见的广告形式及业态"><span class="toc-number">1.1.</span> <span class="toc-text">1. 常见的广告形式及业态</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-结算方式"><span class="toc-number">1.2.</span> <span class="toc-text">2. 结算方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-广告行业上下游大体分布"><span class="toc-number">1.3.</span> <span class="toc-text">3. 广告行业上下游大体分布</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-程序化广告的概念及发展历程"><span class="toc-number">1.4.</span> <span class="toc-text">4. 程序化广告的概念及发展历程</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#程序化广告基础"><span class="toc-number">2.</span> <span class="toc-text">程序化广告基础</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-程序化广告4种典型模式"><span class="toc-number">2.1.</span> <span class="toc-text">1. 程序化广告4种典型模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-接口规范"><span class="toc-number">2.2.</span> <span class="toc-text">2. 接口规范</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-程序化购买-投放的关键特征"><span class="toc-number">2.3.</span> <span class="toc-text">3. 程序化购买/投放的关键特征</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#程序化广告中的大数据基础"><span class="toc-number">3.</span> <span class="toc-text">程序化广告中的大数据基础</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-人的唯一性标识"><span class="toc-number">3.1.</span> <span class="toc-text">1. 人的唯一性标识</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-受众数据及来源"><span class="toc-number">3.2.</span> <span class="toc-text">2. 受众数据及来源</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-大数据管理平台"><span class="toc-number">3.3.</span> <span class="toc-text">3. 大数据管理平台</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#监测注意要点"><span class="toc-number">4.</span> <span class="toc-text">监测注意要点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-视频广告投放TA浓度KPI注意事项"><span class="toc-number">4.1.</span> <span class="toc-text">1. 视频广告投放TA浓度KPI注意事项</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-广告可见性IAB规范"><span class="toc-number">4.2.</span> <span class="toc-text">2. 广告可见性IAB规范</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-品牌安全"><span class="toc-number">4.3.</span> <span class="toc-text">3. 品牌安全</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-程序化广告中监测GAP注意事项"><span class="toc-number">4.4.</span> <span class="toc-text">4. 程序化广告中监测GAP注意事项</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -536,7 +614,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/08/25/动手学深度学习第一课：从上手到多类分类/">动手学深度学习第一课：从上手到多类分类</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/24/TensorFlow/">TensorFlow机器学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/19/编写高质量Objective-C/">《编写高质量Objective-C》笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/18/白话区块链/">《白话区块链》笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/18/广告程序化/">《程序化广告实战》笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/17/markDownd公式/">MarkDownd中数学公式整理</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/17/hello-world/">Hello World</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/09/02/C语言笔记/">C语言笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/30/数学笔记/">数学笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/25/动手学深度学习第一课：从上手到多类分类/">动手学深度学习第一课：从上手到多类分类</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/24/TensorFlow/">TensorFlow机器学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/19/编写高质量Objective-C/">《编写高质量Objective-C》笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/18/白话区块链/">《白话区块链》笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/18/广告程序化/">《程序化广告实战》笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/17/markDownd公式/">MarkDownd中数学公式整理</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/17/hello-world/">Hello World</a></li></ul>
 
 
 
