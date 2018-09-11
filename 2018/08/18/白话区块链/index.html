@@ -49,7 +49,8 @@
 <meta property="og:image" content="http://yoursite.com/2018/08/18/白话区块链/QQ20180823-154556@2x.png">
 <meta property="og:image" content="http://yoursite.com/2018/08/18/白话区块链/QQ20180824-190108@2x.png">
 <meta property="og:image" content="http://yoursite.com/2018/08/18/白话区块链/QQ20180824-190607@2x.png">
-<meta property="og:updated_time" content="2018-08-30T06:47:44.823Z">
+<meta property="og:image" content="http://yoursite.com/2018/08/18/白话区块链/QQ20180906-072359@2x.png">
+<meta property="og:updated_time" content="2018-09-08T03:10:56.083Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《白话区块链》笔记">
 <meta name="twitter:description" content="第1章 初识区块链例说区块链1. 从一本账本说起，账本记账权的演进 由一个人独自记账，容易出现坏账。     由多个人轮流保管同一个账本记账，账本如若受人为或意外损害，仍然会出现坏账。             每个人都拥有一本自己的账本，任何一个人改动来账本都必须要告知所有其他人，其他人会在自己的账本上同样地记上一笔，如果有人发现新改动的账目不对，可以拒绝接受，到了最后，以大多数人都一致的账目">
@@ -210,7 +211,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C语言/">C语言</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Objective-C/">Objective-C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TensorFlow/">TensorFlow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markDownd-数学公式/">markDownd 数学公式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/区块链/">区块链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数学/">数学</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C语言/">C语言</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Objective-C/">Objective-C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TensorFlow/">TensorFlow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markDownd-数学公式/">markDownd 数学公式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/区块链/">区块链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/大数据/">大数据</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数学/">数学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件架构/">软件架构</a></li></ul>
                     </div>
                 </section>
                 
@@ -887,6 +888,158 @@
 <ul>
 <li>完整性证明</li>
 </ul>
+<h2 id="第4章-区块链灵魂：共识算法"><a href="#第4章-区块链灵魂：共识算法" class="headerlink" title="第4章 区块链灵魂：共识算法"></a>第4章 区块链灵魂：共识算法</h2><h3 id="分布式系统的一致性"><a href="#分布式系统的一致性" class="headerlink" title="分布式系统的一致性"></a>分布式系统的一致性</h3><p>区块链系统本质就是一个分布式应用软件。分布式系统的首要问题就是如何解决一致性的问题，也就是如何在多个独立的节点之间达成共识。</p>
+<p>一致性难题：</p>
+<ul>
+<li>分布式系统本身可能出故障。</li>
+</ul>
+<ul>
+<li>分布式系统之间的通信可能有故障，或者有巨大的延迟。</li>
+</ul>
+<ul>
+<li>分布式系统运行的速度可能大不相同，有的系统运行很快，而有些则很慢。</li>
+</ul>
+<h4 id="1-一致性问题"><a href="#1-一致性问题" class="headerlink" title="1. 一致性问题"></a>1. 一致性问题</h4><p>出于系统可用性考虑，对于分布式系统来说，我们一般希望具备以下能力：</p>
+<ul>
+<li>分布式系统作为一个逻辑整体，不应该返回错误的结果。</li>
+</ul>
+<ul>
+<li>只要系统里的大部分机器工作正常，整个分布式系统就能有效运行，这也是分布式系统应用的一个优点，抵抗单点故障。</li>
+</ul>
+<ul>
+<li>系统的性能是可以横向扩展的，对于分布式系统来说，木桶原理不起作用。</li>
+</ul>
+<ul>
+<li>分布式系统必须是异步的，也就是说每个节点可以按照自己的时序独立工作，没有全序的时间顺序。</li>
+</ul>
+<h4 id="2-两个原理：FLP与CAP"><a href="#2-两个原理：FLP与CAP" class="headerlink" title="2. 两个原理：FLP与CAP"></a>2. 两个原理：FLP与CAP</h4><ul>
+<li><p>FLP定理<br>在网络可靠、存在节点失效（即使只有一个—）的最小化异步模型系统中，不存在一个可以解决一致性问题的确定性算法。<br>在这个原理的前提下，也告诉人们：不要浪费时间去为异步分布式系统设计在任意场景下都能实现共识的算法，在允许节点失效的情况下，纯粹异步系统无法确保一致性在有限时间内完成。</p>
+</li>
+<li><p>CAP定理<br>分布式计算系统不可能同时确保一致性、可用性和分区容错性，这三者不可兼得。</p>
+</li>
+</ul>
+<h4 id="3-拜占庭将军问题"><a href="#3-拜占庭将军问题" class="headerlink" title="3. 拜占庭将军问题"></a>3. 拜占庭将军问题</h4><p>拜占庭将军问题的经典描述：拜占庭的军队是由小分队组成的，每个小分队由一个将军指挥，将军们通过传令兵来策划一系列的行动。有些将军是叛徒，他们会有意地妨碍忠诚的将军达成一致的计划，即使背叛的将军一直在诱使他们采用糟糕的计划。已经证明，如果背叛的将军超过了将军总数的1/3，达成上述目标是不可能的。</p>
+<div align="center">
+    <img src="/2018/08/18/白话区块链/QQ20180906-072359@2x.png" width="400">
+</div>
+
+<ul>
+<li>拜占庭容错<br>这是最难处理的情况，指的是有一个节点压根就不按照程序逻辑执行，对它的调用会返回随意或者混乱的结果。</li>
+</ul>
+<ul>
+<li>崩溃容错<br>比拜占庭容错多了一个限制，那就是节点总是按照程序逻辑执行，结果是正确的，但是不保证消息返回的时间。</li>
+</ul>
+<ul>
+<li>遗漏容错<br>比崩溃容错多了一个限制，就是一定要“非健忘”。非健忘是指这个节点崩溃之前能把状态完整地保存在持久存储上，启动之后可以再次按照以前的状态继续执行和通信。</li>
+</ul>
+<ul>
+<li>崩溃停止容错<br>比遗漏容错多了一个故障发生后要停止响应的要求。</li>
+</ul>
+<h4 id="4-共识算法的目的"><a href="#4-共识算法的目的" class="headerlink" title="4. 共识算法的目的"></a>4. 共识算法的目的</h4><p>分布式共识协议具有以下两点属性：</p>
+<ul>
+<li>如果所有公正节点达成共识，共识过程终止；</li>
+</ul>
+<ul>
+<li>最后达成的共识必须是公正的。</li>
+</ul>
+<p>由于私有链是封闭生态的存储网络，因此使用传统分布式一致性模型应该是最优的；由于联盟行业链的半封闭、半开放特性，使用Delegated Proof of xxx是最优的；对于公有链，PoW应该是最优的选择。</p>
+<p>常见共识算法一览表：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>共识算法</th>
+<th>应用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PoW</td>
+<td>比特币、莱特币，以及以太坊前3个阶段：Frontier(前沿)、Homestead(家园)、Metropolis(大都会)</td>
+</tr>
+<tr>
+<td>PoS</td>
+<td>PeerCoin、NXT，以及以太坊的第4个阶段，即Serenity(宁静)</td>
+</tr>
+<tr>
+<td>DPoS</td>
+<td>BitShare</td>
+</tr>
+<tr>
+<td>Paxos</td>
+<td>Google Chubby、ZooKeeper</td>
+</tr>
+<tr>
+<td>PBFT</td>
+<td>Hyperledger Fabric</td>
+</tr>
+<tr>
+<td>Raft</td>
+<td>etcd</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="Paxos算法"><a href="#Paxos算法" class="headerlink" title="Paxos算法"></a>Paxos算法</h3><p>Paxos算法解决的是非拜占庭将军问题，也就是说仅仅是指分布式系统中的节点存在故障，但是不存在恶意节点的场景，在这种情况下如何达成共识。</p>
+<h3 id="Raft算法"><a href="#Raft算法" class="headerlink" title="Raft算法"></a>Raft算法</h3><p>由于Paxos太难懂、太难以实现，Raft算法应运而生。其目的是在可靠性不输于Paxos的情况下，尽可能简单易懂。<br>Raft既明确定义了算法中每个环节的细节，也考虑到了整个算法的简单性与完整性。</p>
+<h3 id="PBFT算法"><a href="#PBFT算法" class="headerlink" title="PBFT算法"></a>PBFT算法</h3><p>Practical Byzantine Fault Tolerance是第一个得到广泛应用的BFT算法。在PBFT算法中，至多可以容忍不超过系统全部节点数量的1/3的拜占庭节点“背叛”，即如果超过2/3的拜占庭节点正常，整个系统就可以正常工作。</p>
+<p>在PBFT算法中，每个副本有3个状态：pre-prepare、prepared和commited。消息也有3种：pre-prepare、prepared和committed。</p>
+<p>主要优点：</p>
+<ul>
+<li>PBFT算法共识各节点由业务的参与方或者监管方组成，安全性与稳定性由业务相关方保证。</li>
+</ul>
+<ul>
+<li>共识的时延大约在2～5秒，基本达到商用实时处理的要求。</li>
+</ul>
+<ul>
+<li>共识效率高，可满足高频交易量的需求。</li>
+</ul>
+<h3 id="工作量证明——PoW"><a href="#工作量证明——PoW" class="headerlink" title="工作量证明——PoW"></a>工作量证明——PoW</h3><ul>
+<li>向所有的节点广播新的交易；</li>
+</ul>
+<ul>
+<li>每个节点把收到的交易放进块中；</li>
+</ul>
+<ul>
+<li>在每一轮中，一个被随机选中的节点广播它所保有的块；</li>
+</ul>
+<ul>
+<li>其他节点在验证中的所有的交易正确无误后接受该区块；</li>
+</ul>
+<ul>
+<li>其他节点将该区块的哈希值放入下一个它们创建的区块中，表示它们承认这个区块的正确性。</li>
+</ul>
+<p>PoW共识协议的优点是完全去中心化，节点自由进出。但是依赖机器进行数学运算来获取记账权，资源的消耗相比其他共识需要全网共同参与运算，性能效率比较低，容错性方面允许全网50%节点出错。</p>
+<h3 id="股权权益证明——PoS"><a href="#股权权益证明——PoS" class="headerlink" title="股权权益证明——PoS"></a>股权权益证明——PoS</h3><p>PoS算法是针对PoW算法的缺点的改进。PoS不像PoW那样，无论什么人，买了矿机，下载了软件，就可以参与。PoS要求参与者预先放一些代币（利益）在区块链上，类似将财产存储在银行，这种模式会根据你持有的数字货币的量和时间，分配给你相应的利息。</p>
+<p>PoS运作机制大致如下：</p>
+<ul>
+<li>加入PoS机制的都是持币人，成为验证者(validator)；</li>
+</ul>
+<ul>
+<li>PoS算法在这些验证者里挑一个给予权利生成新的区块。挑选顺序依据持币的多少；</li>
+</ul>
+<ul>
+<li>如果在一定时间内，没有生成区块，PoS则挑选下一个验证者，给予生成新的区块的权利；</li>
+</ul>
+<ul>
+<li>以此类推，以区块链中最长的链为准。</li>
+</ul>
+<h3 id="委托权益人证明机制——DPoS"><a href="#委托权益人证明机制——DPoS" class="headerlink" title="委托权益人证明机制——DPoS"></a>委托权益人证明机制——DPoS</h3><p>DPoS算法中使用见证人机制(witness)解决中心化问题。总共有N个见证人对区块进行签名。DPoS消除了交易需要等待一定数量区块被非信任节点验证的时间消耗。通过减少确认的要求，DPoS算法大大提高了交易的速度。通过信任少量的诚信节点，可以去除区块签名过程中不必要的步骤。</p>
+<p>权益所有人为了见证尽量长时间在线，要付给见证人一定的报酬。</p>
+<p>见证人必须保证尽量在线。如果见证人错过了签署区块链，就要被踢出董事会。不能担任见证人的工作。</p>
+<p>如果权益所有人不喜欢选出来的见证人，可以选择卖出权益退场。</p>
+<p>DPoS使得区块链网络保留了一些中心化系统的关键优势，同时又能保证一定的去中心化。见证人机制使得交易只用等待少量诚信节点（见证人）的响应，而不必等待其他非信任节点的响应。</p>
+<h3 id="共识算法的社会学探讨"><a href="#共识算法的社会学探讨" class="headerlink" title="共识算法的社会学探讨"></a>共识算法的社会学探讨</h3><p>比特币的天才之处在于参照人类社会的组织方式和运作方式，引入了共识机制。一个交易的成立与否，也就是分布式账本的记账权，经由特定共识机制达成的共识来决定。</p>
+<ul>
+<li>PoW，我们可以叫它“范进中举”。<br>范进用了大半辈子学习一种无用的八股文写作，如同比特币矿工用算力来算题，关键是算的题毫无意义。有朝一日，运气好，就可以有权打包所有他认可的交易。</li>
+</ul>
+<ul>
+<li>PoS是用户要预先放入一些利益，这是不是很像我们现实世界中的股份制。人们把真金白银兑换成股份，开始创业。谁的股份多，谁的话语权就大。</li>
+</ul>
+<ul>
+<li>DPoS机制，特别像我们的董事会。选举出代表，代表股东的利益。被选出的代表，一般来说，成熟老练、阅历丰富。不但能快速地处理日常事务，同时也能很好地保护股东的利益。</li>
+</ul>
+<p>Paxos、Raft、PBFT则很像我们生活中的操练队列，通过互相间的消息、口令来达成一致。每排的排头作为Leader，而每排的其余人都以排头为目标，调整自己的行动。</p>
 <p><script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.6.5/flowchart.min.js"></script><textarea id="flowchart-0-code" style="display: none">op1=>operation: 账房先生
 io=>inputoutput: 账本
 
@@ -902,7 +1055,7 @@ op1(right)->io</textarea><textarea id="flowchart-0-options" style="display: none
         <p><span>本文标题:</span><a href="/2018/08/18/白话区块链/">《白话区块链》笔记</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">morven</a></p>
         <p><span>发布时间:</span>2018-08-18, 11:30:43</p>
-        <p><span>最后更新:</span>2018-08-30, 14:47:44</p>
+        <p><span>最后更新:</span>2018-09-08, 11:10:56</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/08/18/白话区块链/" title="《白话区块链》笔记">http://yoursite.com/2018/08/18/白话区块链/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/08/18/白话区块链/　　作者: morven" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -938,7 +1091,7 @@ op1(right)->io</textarea><textarea id="flowchart-0-options" style="display: none
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#第1章-初识区块链"><span class="toc-number">1.</span> <span class="toc-text">第1章 初识区块链</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#例说区块链"><span class="toc-number">1.1.</span> <span class="toc-text">例说区块链</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-从一本账本说起，账本记账权的演进"><span class="toc-number">1.1.1.</span> <span class="toc-text">1. 从一本账本说起，账本记账权的演进</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-区块链技术理念"><span class="toc-number">1.1.2.</span> <span class="toc-text">2. 区块链技术理念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-一般工作流程"><span class="toc-number">1.1.3.</span> <span class="toc-text">3 一般工作流程</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#区块链技术栈"><span class="toc-number">1.2.</span> <span class="toc-text">区块链技术栈</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-区块链账本"><span class="toc-number">1.2.1.</span> <span class="toc-text">1. 区块链账本</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-共识机制"><span class="toc-number">1.2.2.</span> <span class="toc-text">2. 共识机制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-密码算法"><span class="toc-number">1.2.3.</span> <span class="toc-text">3. 密码算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-脚本系统"><span class="toc-number">1.2.4.</span> <span class="toc-text">4. 脚本系统</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-网络路由"><span class="toc-number">1.2.5.</span> <span class="toc-text">5. 网络路由</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#区块链分类与架构"><span class="toc-number">1.3.</span> <span class="toc-text">区块链分类与架构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-区块链架构"><span class="toc-number">1.3.1.</span> <span class="toc-text">1. 区块链架构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-区块链分类"><span class="toc-number">1.3.2.</span> <span class="toc-text">2. 区块链分类</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一切源自比特币"><span class="toc-number">1.4.</span> <span class="toc-text">一切源自比特币</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-比特币技术论文介绍"><span class="toc-number">1.4.1.</span> <span class="toc-text">1. 比特币技术论文介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-比特币核心程序：中本聪客户端"><span class="toc-number">1.4.2.</span> <span class="toc-text">2. 比特币核心程序：中本聪客户端</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#比特币的发行：挖矿"><span class="toc-number">1.4.3.</span> <span class="toc-text">比特币的发行：挖矿</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-比特币钱包：核心钱包与轻钱包"><span class="toc-number">1.4.4.</span> <span class="toc-text">4. 比特币钱包：核心钱包与轻钱包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-比特币账户模型：UTXO"><span class="toc-number">1.4.5.</span> <span class="toc-text">5. 比特币账户模型：UTXO</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-手动编译比特币源码"><span class="toc-number">1.4.6.</span> <span class="toc-text">6. 手动编译比特币源码</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#区块链的技术意义"><span class="toc-number">1.5.</span> <span class="toc-text">区块链的技术意义</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-数据不可篡改性"><span class="toc-number">1.5.1.</span> <span class="toc-text">1. 数据不可篡改性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-分布式存储"><span class="toc-number">1.5.2.</span> <span class="toc-text">2. 分布式存储</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-匿名性"><span class="toc-number">1.5.3.</span> <span class="toc-text">3. 匿名性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-价值传递"><span class="toc-number">1.5.4.</span> <span class="toc-text">4. 价值传递</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-自动网络共识"><span class="toc-number">1.5.5.</span> <span class="toc-text">5. 自动网络共识</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-可编程合约"><span class="toc-number">1.5.6.</span> <span class="toc-text">6. 可编程合约</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#知识点导图"><span class="toc-number">1.6.</span> <span class="toc-text">知识点导图</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第2章-区块链应用发展"><span class="toc-number">2.</span> <span class="toc-text">第2章 区块链应用发展</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#比特币及其朋友圈：加密数字货币"><span class="toc-number">2.1.</span> <span class="toc-text">比特币及其朋友圈：加密数字货币</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-以太坊（Ethereum）"><span class="toc-number">2.1.1.</span> <span class="toc-text">1. 以太坊（Ethereum）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-比特币现金"><span class="toc-number">2.1.2.</span> <span class="toc-text">2. 比特币现金</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-莱特币"><span class="toc-number">2.1.3.</span> <span class="toc-text">3. 莱特币</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-零币"><span class="toc-number">2.1.4.</span> <span class="toc-text">4. 零币</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-数字货币发展总结"><span class="toc-number">2.1.5.</span> <span class="toc-text">5. 数字货币发展总结</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#区块链扩展应用：智能合约"><span class="toc-number">2.2.</span> <span class="toc-text">区块链扩展应用：智能合约</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-比特币中包含的合约思想"><span class="toc-number">2.2.1.</span> <span class="toc-text">1. 比特币中包含的合约思想</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-以太坊中图灵完备的合约支持"><span class="toc-number">2.2.2.</span> <span class="toc-text">2. 以太坊中图灵完备的合约支持</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#交易结算"><span class="toc-number">2.3.</span> <span class="toc-text">交易结算</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-银行结算清算"><span class="toc-number">2.3.1.</span> <span class="toc-text">1. 银行结算清算</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-瑞波：开放支付网络"><span class="toc-number">2.3.2.</span> <span class="toc-text">2. 瑞波：开放支付网络</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IPFS：星际文件系统"><span class="toc-number">2.4.</span> <span class="toc-text">IPFS：星际文件系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#公证防伪溯源"><span class="toc-number">2.5.</span> <span class="toc-text">公证防伪溯源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#供应链金融"><span class="toc-number">2.6.</span> <span class="toc-text">供应链金融</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#区块链基础设施：可编程社会"><span class="toc-number">2.7.</span> <span class="toc-text">区块链基础设施：可编程社会</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#链内资产与链外资产"><span class="toc-number">2.8.</span> <span class="toc-text">链内资产与链外资产</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#知识点导图-1"><span class="toc-number">2.9.</span> <span class="toc-text">知识点导图</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第3章-区块链骨骼：密码算法"><span class="toc-number">3.</span> <span class="toc-text">第3章 区块链骨骼：密码算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#哈希算法"><span class="toc-number">3.1.</span> <span class="toc-text">哈希算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-什么是哈希计算"><span class="toc-number">3.1.1.</span> <span class="toc-text">1. 什么是哈希计算</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-哈希算法的种类"><span class="toc-number">3.1.2.</span> <span class="toc-text">2. 哈希算法的种类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-区块链中的哈希算法"><span class="toc-number">3.1.3.</span> <span class="toc-text">3. 区块链中的哈希算法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#公开密钥算法"><span class="toc-number">3.2.</span> <span class="toc-text">公开密钥算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-两把钥匙：公钥和私钥"><span class="toc-number">3.2.1.</span> <span class="toc-text">1. 两把钥匙：公钥和私钥</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-RSA算法"><span class="toc-number">3.2.2.</span> <span class="toc-text">2. RSA算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-椭圆曲线密码算法"><span class="toc-number">3.2.3.</span> <span class="toc-text">3. 椭圆曲线密码算法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编码-解码算法"><span class="toc-number">3.3.</span> <span class="toc-text">编码/解码算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Base64"><span class="toc-number">3.3.1.</span> <span class="toc-text">1. Base64</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-Base58"><span class="toc-number">3.3.2.</span> <span class="toc-text">2. Base58</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-Base58Check"><span class="toc-number">3.3.3.</span> <span class="toc-text">3. Base58Check</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#应用场景"><span class="toc-number">3.4.</span> <span class="toc-text">应用场景</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#第1章-初识区块链"><span class="toc-number">1.</span> <span class="toc-text">第1章 初识区块链</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#例说区块链"><span class="toc-number">1.1.</span> <span class="toc-text">例说区块链</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-从一本账本说起，账本记账权的演进"><span class="toc-number">1.1.1.</span> <span class="toc-text">1. 从一本账本说起，账本记账权的演进</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-区块链技术理念"><span class="toc-number">1.1.2.</span> <span class="toc-text">2. 区块链技术理念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-一般工作流程"><span class="toc-number">1.1.3.</span> <span class="toc-text">3 一般工作流程</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#区块链技术栈"><span class="toc-number">1.2.</span> <span class="toc-text">区块链技术栈</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-区块链账本"><span class="toc-number">1.2.1.</span> <span class="toc-text">1. 区块链账本</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-共识机制"><span class="toc-number">1.2.2.</span> <span class="toc-text">2. 共识机制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-密码算法"><span class="toc-number">1.2.3.</span> <span class="toc-text">3. 密码算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-脚本系统"><span class="toc-number">1.2.4.</span> <span class="toc-text">4. 脚本系统</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-网络路由"><span class="toc-number">1.2.5.</span> <span class="toc-text">5. 网络路由</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#区块链分类与架构"><span class="toc-number">1.3.</span> <span class="toc-text">区块链分类与架构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-区块链架构"><span class="toc-number">1.3.1.</span> <span class="toc-text">1. 区块链架构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-区块链分类"><span class="toc-number">1.3.2.</span> <span class="toc-text">2. 区块链分类</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一切源自比特币"><span class="toc-number">1.4.</span> <span class="toc-text">一切源自比特币</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-比特币技术论文介绍"><span class="toc-number">1.4.1.</span> <span class="toc-text">1. 比特币技术论文介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-比特币核心程序：中本聪客户端"><span class="toc-number">1.4.2.</span> <span class="toc-text">2. 比特币核心程序：中本聪客户端</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#比特币的发行：挖矿"><span class="toc-number">1.4.3.</span> <span class="toc-text">比特币的发行：挖矿</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-比特币钱包：核心钱包与轻钱包"><span class="toc-number">1.4.4.</span> <span class="toc-text">4. 比特币钱包：核心钱包与轻钱包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-比特币账户模型：UTXO"><span class="toc-number">1.4.5.</span> <span class="toc-text">5. 比特币账户模型：UTXO</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-手动编译比特币源码"><span class="toc-number">1.4.6.</span> <span class="toc-text">6. 手动编译比特币源码</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#区块链的技术意义"><span class="toc-number">1.5.</span> <span class="toc-text">区块链的技术意义</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-数据不可篡改性"><span class="toc-number">1.5.1.</span> <span class="toc-text">1. 数据不可篡改性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-分布式存储"><span class="toc-number">1.5.2.</span> <span class="toc-text">2. 分布式存储</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-匿名性"><span class="toc-number">1.5.3.</span> <span class="toc-text">3. 匿名性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-价值传递"><span class="toc-number">1.5.4.</span> <span class="toc-text">4. 价值传递</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-自动网络共识"><span class="toc-number">1.5.5.</span> <span class="toc-text">5. 自动网络共识</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-可编程合约"><span class="toc-number">1.5.6.</span> <span class="toc-text">6. 可编程合约</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#知识点导图"><span class="toc-number">1.6.</span> <span class="toc-text">知识点导图</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第2章-区块链应用发展"><span class="toc-number">2.</span> <span class="toc-text">第2章 区块链应用发展</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#比特币及其朋友圈：加密数字货币"><span class="toc-number">2.1.</span> <span class="toc-text">比特币及其朋友圈：加密数字货币</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-以太坊（Ethereum）"><span class="toc-number">2.1.1.</span> <span class="toc-text">1. 以太坊（Ethereum）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-比特币现金"><span class="toc-number">2.1.2.</span> <span class="toc-text">2. 比特币现金</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-莱特币"><span class="toc-number">2.1.3.</span> <span class="toc-text">3. 莱特币</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-零币"><span class="toc-number">2.1.4.</span> <span class="toc-text">4. 零币</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-数字货币发展总结"><span class="toc-number">2.1.5.</span> <span class="toc-text">5. 数字货币发展总结</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#区块链扩展应用：智能合约"><span class="toc-number">2.2.</span> <span class="toc-text">区块链扩展应用：智能合约</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-比特币中包含的合约思想"><span class="toc-number">2.2.1.</span> <span class="toc-text">1. 比特币中包含的合约思想</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-以太坊中图灵完备的合约支持"><span class="toc-number">2.2.2.</span> <span class="toc-text">2. 以太坊中图灵完备的合约支持</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#交易结算"><span class="toc-number">2.3.</span> <span class="toc-text">交易结算</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-银行结算清算"><span class="toc-number">2.3.1.</span> <span class="toc-text">1. 银行结算清算</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-瑞波：开放支付网络"><span class="toc-number">2.3.2.</span> <span class="toc-text">2. 瑞波：开放支付网络</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IPFS：星际文件系统"><span class="toc-number">2.4.</span> <span class="toc-text">IPFS：星际文件系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#公证防伪溯源"><span class="toc-number">2.5.</span> <span class="toc-text">公证防伪溯源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#供应链金融"><span class="toc-number">2.6.</span> <span class="toc-text">供应链金融</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#区块链基础设施：可编程社会"><span class="toc-number">2.7.</span> <span class="toc-text">区块链基础设施：可编程社会</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#链内资产与链外资产"><span class="toc-number">2.8.</span> <span class="toc-text">链内资产与链外资产</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#知识点导图-1"><span class="toc-number">2.9.</span> <span class="toc-text">知识点导图</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第3章-区块链骨骼：密码算法"><span class="toc-number">3.</span> <span class="toc-text">第3章 区块链骨骼：密码算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#哈希算法"><span class="toc-number">3.1.</span> <span class="toc-text">哈希算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-什么是哈希计算"><span class="toc-number">3.1.1.</span> <span class="toc-text">1. 什么是哈希计算</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-哈希算法的种类"><span class="toc-number">3.1.2.</span> <span class="toc-text">2. 哈希算法的种类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-区块链中的哈希算法"><span class="toc-number">3.1.3.</span> <span class="toc-text">3. 区块链中的哈希算法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#公开密钥算法"><span class="toc-number">3.2.</span> <span class="toc-text">公开密钥算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-两把钥匙：公钥和私钥"><span class="toc-number">3.2.1.</span> <span class="toc-text">1. 两把钥匙：公钥和私钥</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-RSA算法"><span class="toc-number">3.2.2.</span> <span class="toc-text">2. RSA算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-椭圆曲线密码算法"><span class="toc-number">3.2.3.</span> <span class="toc-text">3. 椭圆曲线密码算法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编码-解码算法"><span class="toc-number">3.3.</span> <span class="toc-text">编码/解码算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Base64"><span class="toc-number">3.3.1.</span> <span class="toc-text">1. Base64</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-Base58"><span class="toc-number">3.3.2.</span> <span class="toc-text">2. Base58</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-Base58Check"><span class="toc-number">3.3.3.</span> <span class="toc-text">3. Base58Check</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#应用场景"><span class="toc-number">3.4.</span> <span class="toc-text">应用场景</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第4章-区块链灵魂：共识算法"><span class="toc-number">4.</span> <span class="toc-text">第4章 区块链灵魂：共识算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#分布式系统的一致性"><span class="toc-number">4.1.</span> <span class="toc-text">分布式系统的一致性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-一致性问题"><span class="toc-number">4.1.1.</span> <span class="toc-text">1. 一致性问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-两个原理：FLP与CAP"><span class="toc-number">4.1.2.</span> <span class="toc-text">2. 两个原理：FLP与CAP</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-拜占庭将军问题"><span class="toc-number">4.1.3.</span> <span class="toc-text">3. 拜占庭将军问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-共识算法的目的"><span class="toc-number">4.1.4.</span> <span class="toc-text">4. 共识算法的目的</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Paxos算法"><span class="toc-number">4.2.</span> <span class="toc-text">Paxos算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Raft算法"><span class="toc-number">4.3.</span> <span class="toc-text">Raft算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PBFT算法"><span class="toc-number">4.4.</span> <span class="toc-text">PBFT算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#工作量证明——PoW"><span class="toc-number">4.5.</span> <span class="toc-text">工作量证明——PoW</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#股权权益证明——PoS"><span class="toc-number">4.6.</span> <span class="toc-text">股权权益证明——PoS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#委托权益人证明机制——DPoS"><span class="toc-number">4.7.</span> <span class="toc-text">委托权益人证明机制——DPoS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#共识算法的社会学探讨"><span class="toc-number">4.8.</span> <span class="toc-text">共识算法的社会学探讨</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -1008,7 +1161,7 @@ op1(right)->io</textarea><textarea id="flowchart-0-options" style="display: none
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/09/02/C语言笔记/">C语言笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/30/数学笔记/">数学笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/25/动手学深度学习第一课：从上手到多类分类/">动手学深度学习第一课：从上手到多类分类</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/24/TensorFlow/">TensorFlow机器学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/19/编写高质量Objective-C/">《编写高质量Objective-C》笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/18/白话区块链/">《白话区块链》笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/18/广告程序化/">《程序化广告实战》笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/17/markDownd公式/">MarkDownd中数学公式整理</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/17/hello-world/">Hello World</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/09/09/结构思考力/">结构思考力</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/08/软件架构/">软件架构原理</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/02/大数据笔记/">大数据笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/02/C语言笔记/">C语言笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/30/数学笔记/">数学笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/25/动手学深度学习第一课：从上手到多类分类/">动手学深度学习第一课：从上手到多类分类</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/24/TensorFlow/">TensorFlow机器学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/19/编写高质量Objective-C/">《编写高质量Objective-C》笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/18/白话区块链/">《白话区块链》笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/18/广告程序化/">《程序化广告实战》笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/17/markDownd公式/">MarkDownd中数学公式整理</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/17/hello-world/">Hello World</a></li></ul>
 
 
 

@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="Morvenyang2018">
 <meta property="og:description" content="C语言基础知识C程序必须有一个main函数，它是程序执行的起点。 函数的标量参数通过传值的方式进行传递，而数组名参数则具有传址调用的语义。 字符串是一串由NUL字节结尾的字符，并且有一组库函数以不同方式专门用于操作字符串。 printf函数执行格式化输出，scanf函数用于格式化输入，getchar和putchar分别执行非格式化字符的输入和输出。 if和while语句在C语言中的用途跟它们在其他">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-02T01:37:11.882Z">
+<meta property="og:updated_time" content="2018-09-08T01:43:27.778Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C语言笔记">
 <meta name="twitter:description" content="C语言基础知识C程序必须有一个main函数，它是程序执行的起点。 函数的标量参数通过传值的方式进行传递，而数组名参数则具有传址调用的语义。 字符串是一串由NUL字节结尾的字符，并且有一组库函数以不同方式专门用于操作字符串。 printf函数执行格式化输出，scanf函数用于格式化输入，getchar和putchar分别执行非格式化字符的输入和输出。 if和while语句在C语言中的用途跟它们在其他">
@@ -183,7 +183,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C语言/">C语言</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Objective-C/">Objective-C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TensorFlow/">TensorFlow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markDownd-数学公式/">markDownd 数学公式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/区块链/">区块链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数学/">数学</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C语言/">C语言</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Objective-C/">Objective-C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TensorFlow/">TensorFlow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markDownd-数学公式/">markDownd 数学公式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/区块链/">区块链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/大数据/">大数据</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数学/">数学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件架构/">软件架构</a></li></ul>
                     </div>
                 </section>
                 
@@ -323,6 +323,9 @@
 <p>标识符由字母、数字和下划线组成，但不能以数字开头。在标识符中，大写字母和小写字母是不一样的。</p>
 <p>关键字由系统保留，不能作为标识符使用。</p>
 <p>良好的程序风格和文档将使程序更容易阅读和维护。</p>
+<p>具有external链接属性的实体在其他语言的术语里称为全局(global)实体，所有源文件中的所有函数均可以访问它。</p>
+<p>只要变量并非声明于代码块或函数定义内部，它在缺省情况下的链接属性即为external。</p>
+<p>如果一个变量声明于代码块内部，在它前面添加extern关键字将使它所引用的是全局变量而非局部变量。</p>
 
       
     </div>
@@ -334,7 +337,7 @@
         <p><span>本文标题:</span><a href="/2018/09/02/C语言笔记/">C语言笔记</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">morven</a></p>
         <p><span>发布时间:</span>2018-09-02, 09:00:19</p>
-        <p><span>最后更新:</span>2018-09-02, 09:37:11</p>
+        <p><span>最后更新:</span>2018-09-08, 09:43:27</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/09/02/C语言笔记/" title="C语言笔记">http://yoursite.com/2018/09/02/C语言笔记/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/09/02/C语言笔记/　　作者: morven" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -348,6 +351,12 @@
 
 
     <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2018/09/02/大数据笔记/">
+                    大数据笔记
+                </a>
+            </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
@@ -420,7 +429,9 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2018/09/02/大数据笔记/" title="上一篇: 大数据笔记">
+                <i class="fa fa-angle-left"></i>
+            </a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
@@ -432,7 +443,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/09/02/C语言笔记/">C语言笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/30/数学笔记/">数学笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/25/动手学深度学习第一课：从上手到多类分类/">动手学深度学习第一课：从上手到多类分类</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/24/TensorFlow/">TensorFlow机器学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/19/编写高质量Objective-C/">《编写高质量Objective-C》笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/18/白话区块链/">《白话区块链》笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/18/广告程序化/">《程序化广告实战》笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/17/markDownd公式/">MarkDownd中数学公式整理</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/17/hello-world/">Hello World</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/09/09/结构思考力/">结构思考力</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/08/软件架构/">软件架构原理</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/02/大数据笔记/">大数据笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/02/C语言笔记/">C语言笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/30/数学笔记/">数学笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/25/动手学深度学习第一课：从上手到多类分类/">动手学深度学习第一课：从上手到多类分类</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/24/TensorFlow/">TensorFlow机器学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/19/编写高质量Objective-C/">《编写高质量Objective-C》笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/18/白话区块链/">《白话区块链》笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/18/广告程序化/">《程序化广告实战》笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/17/markDownd公式/">MarkDownd中数学公式整理</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/17/hello-world/">Hello World</a></li></ul>
 
 
 
