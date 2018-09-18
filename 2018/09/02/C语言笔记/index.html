@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="Morvenyang2018">
 <meta property="og:description" content="C语言基础知识C程序必须有一个main函数，它是程序执行的起点。 函数的标量参数通过传值的方式进行传递，而数组名参数则具有传址调用的语义。 字符串是一串由NUL字节结尾的字符，并且有一组库函数以不同方式专门用于操作字符串。 printf函数执行格式化输出，scanf函数用于格式化输入，getchar和putchar分别执行非格式化字符的输入和输出。 if和while语句在C语言中的用途跟它们在其他">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-08T01:43:27.778Z">
+<meta property="og:updated_time" content="2018-09-13T09:10:05.058Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C语言笔记">
 <meta name="twitter:description" content="C语言基础知识C程序必须有一个main函数，它是程序执行的起点。 函数的标量参数通过传值的方式进行传递，而数组名参数则具有传址调用的语义。 字符串是一串由NUL字节结尾的字符，并且有一组库函数以不同方式专门用于操作字符串。 printf函数执行格式化输出，scanf函数用于格式化输入，getchar和putchar分别执行非格式化字符的输入和输出。 if和while语句在C语言中的用途跟它们在其他">
@@ -326,6 +326,18 @@
 <p>具有external链接属性的实体在其他语言的术语里称为全局(global)实体，所有源文件中的所有函数均可以访问它。</p>
 <p>只要变量并非声明于代码块或函数定义内部，它在缺省情况下的链接属性即为external。</p>
 <p>如果一个变量声明于代码块内部，在它前面添加extern关键字将使它所引用的是全局变量而非局部变量。</p>
+<p>具有external链接属性的实体总是具有静态存储类型。</p>
+<p>全局变量在程序开始执行前创建，并在程序整个执行过程中始终存在。</p>
+<p>从属于函数的局部变量在函数开始执行时创建，在函数执行完毕后销毁，但用于执行函数的机器指令在程序的生命周期内一直存在。</p>
+<p>局部变量由函数内部使用，不能被其他函数通过名字引用。它在缺省情况下的存储类型为自动，这是基于两个原因：其一，当这些变量需要时才为它们分配存储，这样可以减少内存的总需求量。其二，在堆栈上为它们分配存储可以有效地实现递归。</p>
+<p>为了保持最佳的可移植性，把字符的值限制在有符号和无符号字符范围的交集之内，或者不要在字符上执行算术运算。</p>
+<p>不要把整型值和枚举值混在一起使用。</p>
+<p>不要依赖隐式声明。</p>
+<p>在定义类型的新名字时，使用typedef而不是#define</p>
+<p>用const声明其值不会修改的变量。</p>
+<p>使用名字常量而不是字面值常量。</p>
+<p>不要在嵌套的代码块之间使用相同的变量名。</p>
+<p>除了实体的具体定义位置之外，在它的其他声明位置使用extern关键字。</p>
 
       
     </div>
@@ -337,7 +349,7 @@
         <p><span>本文标题:</span><a href="/2018/09/02/C语言笔记/">C语言笔记</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">morven</a></p>
         <p><span>发布时间:</span>2018-09-02, 09:00:19</p>
-        <p><span>最后更新:</span>2018-09-08, 09:43:27</p>
+        <p><span>最后更新:</span>2018-09-13, 17:10:05</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/09/02/C语言笔记/" title="C语言笔记">http://yoursite.com/2018/09/02/C语言笔记/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/09/02/C语言笔记/　　作者: morven" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -443,7 +455,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/09/09/结构思考力/">结构思考力</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/08/软件架构/">软件架构原理</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/02/大数据笔记/">大数据笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/02/C语言笔记/">C语言笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/30/数学笔记/">数学笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/25/动手学深度学习第一课：从上手到多类分类/">动手学深度学习第一课：从上手到多类分类</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/24/TensorFlow/">TensorFlow机器学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/19/编写高质量Objective-C/">《编写高质量Objective-C》笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/18/白话区块链/">《白话区块链》笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/18/广告程序化/">《程序化广告实战》笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/17/markDownd公式/">MarkDownd中数学公式整理</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/17/hello-world/">Hello World</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/09/09/结构思考力/">结构思考力</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/08/软件架构/">软件架构原理</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/02/大数据笔记/">大数据笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/02/C语言笔记/">C语言笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/30/数学笔记/">数学笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/25/动手学深度学习第一课：从上手到多类分类/">《动手学深度学习》笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/24/TensorFlow/">TensorFlow机器学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/19/编写高质量Objective-C/">《编写高质量Objective-C》笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/18/白话区块链/">《白话区块链》笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/18/广告程序化/">《程序化广告实战》笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/17/markDownd公式/">MarkDownd中数学公式整理</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/17/hello-world/">Hello World</a></li></ul>
 
 
 
