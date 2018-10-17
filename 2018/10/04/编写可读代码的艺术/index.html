@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html >
+<head>
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="morven" />
+
+
+
+<meta name="description" content="代码应当易于理解是什么让代码变得“更好”大多数程序员依靠直觉和灵感来决定如何编程。 12for (Node *node = list -&amp;gt; head; node != NULL; node = node -&amp;gt; next)    Print(node -&amp;gt; data); VS 1234567Node *node = list -&amp;gt; head;if (node == NULL)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="编写可读代码的艺术">
+<meta property="og:url" content="http://yoursite.com/2018/10/04/编写可读代码的艺术/index.html">
+<meta property="og:site_name" content="Morvenyang2018">
+<meta property="og:description" content="代码应当易于理解是什么让代码变得“更好”大多数程序员依靠直觉和灵感来决定如何编程。 12for (Node *node = list -&amp;gt; head; node != NULL; node = node -&amp;gt; next)    Print(node -&amp;gt; data); VS 1234567Node *node = list -&amp;gt; head;if (node == NULL)">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2018/10/04/编写可读代码的艺术/QQ20181006-093536@2x.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/04/编写可读代码的艺术/QQ20181006-093633@2x.png">
+<meta property="og:updated_time" content="2018-10-14T14:05:10.055Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="编写可读代码的艺术">
+<meta name="twitter:description" content="代码应当易于理解是什么让代码变得“更好”大多数程序员依靠直觉和灵感来决定如何编程。 12for (Node *node = list -&amp;gt; head; node != NULL; node = node -&amp;gt; next)    Print(node -&amp;gt; data); VS 1234567Node *node = list -&amp;gt; head;if (node == NULL)">
+<meta name="twitter:image" content="http://yoursite.com/2018/10/04/编写可读代码的艺术/QQ20181006-093536@2x.png">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="Morvenyang2018" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>编写可读代码的艺术 | Morvenyang2018</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: 
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+
+
+
+</head>
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">morven</a></h1>
+        </hgroup>
+
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C语言/">C语言</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Objective-C/">Objective-C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TensorFlow/">TensorFlow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markDownd-数学公式/">markDownd 数学公式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/区块链/">区块链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/大数据/">大数据</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数学/">数学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件架构/">软件架构</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于前端</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">morven</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">morven</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-编写可读代码的艺术" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/10/04/编写可读代码的艺术/" class="article-date">
+      <time datetime="2018-10-04T14:23:03.000Z" itemprop="datePublished">2018-10-04</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      编写可读代码的艺术
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="代码应当易于理解"><a href="#代码应当易于理解" class="headerlink" title="代码应当易于理解"></a>代码应当易于理解</h2><h3 id="是什么让代码变得“更好”"><a href="#是什么让代码变得“更好”" class="headerlink" title="是什么让代码变得“更好”"></a>是什么让代码变得“更好”</h3><p>大多数程序员依靠直觉和灵感来决定如何编程。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (Node *node = list -&gt; head; node != NULL; node = node -&gt; next)</span><br><span class="line">    Print(node -&gt; data);</span><br></pre></td></tr></table></figure>
+<p>VS</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Node *node = list -&gt; head;</span><br><span class="line"><span class="keyword">if</span> (node == NULL) <span class="keyword">return</span>;</span><br><span class="line"><span class="keyword">while</span>(node -&gt; nex != NULL) &#123;</span><br><span class="line">    Print(node -&gt; data);</span><br><span class="line">    node = node -&gt; next;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (node != NULL) Print(node -&gt; data);</span><br></pre></td></tr></table></figure>
+<h3 id="可读性基本定理"><a href="#可读性基本定理" class="headerlink" title="可读性基本定理"></a>可读性基本定理</h3><p>代码的写法应当使别人理解它所需要的时间最小化。</p>
+<h3 id="总是越小越好吗"><a href="#总是越小越好吗" class="headerlink" title="总是越小越好吗"></a>总是越小越好吗</h3><p>一般来讲，你解决问题所用的代码越少就越好，但少的代码并不总是更好！<br>尽管减少代码行数是一个好目标，但把理解代码所需要的时间最小化是一个更好的目标。</p>
+<h3 id="理解代码所需的时间是否与其他目标有冲突"><a href="#理解代码所需的时间是否与其他目标有冲突" class="headerlink" title="理解代码所需的时间是否与其他目标有冲突"></a>理解代码所需的时间是否与其他目标有冲突</h3><p>不冲突！就算是在需要高度优化代码的领域，还是有办法能让代码同时可读性更高。并且让你的代码容易理解往往会把它引向好的架构且容易测试。</p>
+<h2 id="表面层次的改进"><a href="#表面层次的改进" class="headerlink" title="表面层次的改进"></a>表面层次的改进</h2><p>选择好的名字、写好的注释以及把代码整洁地写成更好的格式。</p>
+<h3 id="把信息装到名字里"><a href="#把信息装到名字里" class="headerlink" title="把信息装到名字里"></a>把信息装到名字里</h3><p>选择一个好的名字可以让它承载很多信息。</p>
+<h4 id="选择专业的词"><a href="#选择专业的词" class="headerlink" title="选择专业的词"></a>选择专业的词</h4><p>选择非常专业的词，并且避免使用“空洞”的词。</p>
+<p>举例，“get”这个词就非常不专业，在下面的例子中：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">GetPage</span><span class="params">(url)</span>:</span> ...</span><br></pre></td></tr></table></figure></p>
+<p>“get”这个词没有表达出很多信息。这个方法是从本地的缓存中得到一个页面，还是从数据库中，或者从互联网中？如果是从互联网中，更专业的名字可以是FetchPage()或者DownloadPage()。</p>
+<p>下面是一个BinaryTree类的例子：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BinaryTree</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">Size</span><span class="params">()</span></span>;</span><br><span class="line">    ...</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>你期望Size()方法返回什么呢？树的高度，节点数，还是树在内存中所占的空间？<br>问题是Size()没有承载很多信息。更专业的词可以是Height()、NumNodes()或者MemoryBytes()。</p>
+<h4 id="找到更有表现力的词"><a href="#找到更有表现力的词" class="headerlink" title="找到更有表现力的词"></a>找到更有表现力的词</h4><p>清晰和精确比装可爱好。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>单词</th>
+<th>更多选择</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>send</td>
+<td>deliver, dispatch, announce, distribute, route</td>
+</tr>
+<tr>
+<td>find</td>
+<td>search, extract, locate, recover</td>
+</tr>
+<tr>
+<td>start</td>
+<td>launch, create, begin, open</td>
+</tr>
+<tr>
+<td>make</td>
+<td>create, set up, build, generate, compose, add, new</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="避免像tmp和retval这样泛泛的名字"><a href="#避免像tmp和retval这样泛泛的名字" class="headerlink" title="避免像tmp和retval这样泛泛的名字"></a>避免像tmp和retval这样泛泛的名字</h4><blockquote>
+<p>retval这个名字没有包含很多信息。用一个描述该变量的值的名字来代替它。<br>tmp这个名字只应用于短期存在且临时性为其主要存在因素的变量。</p>
+</blockquote>
+<h4 id="循环迭代器"><a href="#循环迭代器" class="headerlink" title="循环迭代器"></a>循环迭代器</h4><p>像i、j、iter和it等名字常用做索引和循环迭代器。尽管这些名字很空泛，但是大家都知道它们的意思是“我是一个迭代器”。<br>但有时会有比i、j、k更贴切的迭代器命名。</p>
+<h4 id="对于空泛名字的裁定"><a href="#对于空泛名字的裁定" class="headerlink" title="对于空泛名字的裁定"></a>对于空泛名字的裁定</h4><p>在某些情况下空泛的名字也有用处，如果你要使用像tmp、it或者retval这样空泛的名字，那么你要有个好的理由。</p>
+<h4 id="用具体的名字代替抽象的名字"><a href="#用具体的名字代替抽象的名字" class="headerlink" title="用具体的名字代替抽象的名字"></a>用具体的名字代替抽象的名字</h4><p>假设你有一个内部方法叫做ServerCanStart()，它检测服务是否可以监听某个给定的TCP/IP端口。然而ServerCanStart()有点抽象。CanListenOnPort()就更具体一些。这个名字直接地描述了这个方法要做什么事情。</p>
+<h4 id="为名字附带更多信息"><a href="#为名字附带更多信息" class="headerlink" title="为名字附带更多信息"></a>为名字附带更多信息</h4><blockquote>
+<p>带单位的值：如果你的变量是一个度量的话（如时间长度或者字节数），那么最好把名字带上它的单位。</p>
+</blockquote>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>函数参数</th>
+<th>带单位的参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Start(int delay)</td>
+<td>delay -&gt; delay_secs</td>
+</tr>
+<tr>
+<td>CreateCache(int size)</td>
+<td>size -&gt; size_mb</td>
+</tr>
+<tr>
+<td>ThrottleDownload(float limit)</td>
+<td>limit -&gt; max_kbps</td>
+</tr>
+<tr>
+<td>Rotate(float angle)</td>
+<td>angle -&gt; degrees_cw</td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<p>附带其他重要属性</p>
+</blockquote>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>情形</th>
+<th>变量名</th>
+<th>更好的名字</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>一个“纯文本”格式的密码，需要加密后才能进一步使用</td>
+<td>password</td>
+<td>plaintext_password</td>
+</tr>
+<tr>
+<td>一条用户提供的注释，需要转译之后才能用于显示</td>
+<td>comment</td>
+<td>unescaped_comment</td>
+</tr>
+<tr>
+<td>已转化为UTF-8格式的html字节</td>
+<td>html</td>
+<td>html_utf8</td>
+</tr>
+<tr>
+<td>以“url方式编码”的输入数据</td>
+<td>data</td>
+<td>data_urlenc</td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<p>标识变量的任何关键属性，如果需要的话以易读的方式把它加到名字里。</p>
+</blockquote>
+<h4 id="名字应该有多长"><a href="#名字应该有多长" class="headerlink" title="名字应该有多长"></a>名字应该有多长</h4><blockquote>
+<p>在小的作用域里可以使用短的名字<br>输入长名字——不再是个问题：单词补全功能<br>首字母缩略词和缩写<br>丢掉没用的词：例如，ConverToString()就不如ToString()这个更短的名字，而且没有丢失任何有用的信息。</p>
+</blockquote>
+<h4 id="利用名字的格式来传递含义"><a href="#利用名字的格式来传递含义" class="headerlink" title="利用名字的格式来传递含义"></a>利用名字的格式来传递含义</h4><p>对不同的实体使用不同的格式就像语法高亮显示的形式一样，能帮助你更容易地阅读代码。</p>
+<blockquote>
+<p>使用CamelCase来表示类名<br>使用lower<em>separated来表示变量名<br>常量的格式是kConstantName而不是CONST_NAME<br>类成员变量和普通变量一样，但必须以一条下划线结尾，如offset</em></p>
+</blockquote>
+<h4 id="其他格式规范"><a href="#其他格式规范" class="headerlink" title="其他格式规范"></a>其他格式规范</h4><blockquote>
+<p>构造函数应该首字母大写而普通函数首字母小写<br>当调用jQuery库函数时，一条非常有用的规范是，给jQuery返回的结果也加上$作为前缀<br>当给一个HTML标记加id或者class属性时，下划线和连字符都是合法的值。一个可能的规范是用下划线来分开ID中的单词，用连字符来分开class中的单词</p>
+</blockquote>
+<h3 id="不会误解的名字"><a href="#不会误解的名字" class="headerlink" title="不会误解的名字"></a>不会误解的名字</h3><blockquote>
+<p>要多问自己几遍：“这个名字会被别人解读成其他的含义吗？”要仔细审视这个名字。</p>
+</blockquote>
+<h4 id="推荐用min和max来表示（包含）极限"><a href="#推荐用min和max来表示（包含）极限" class="headerlink" title="推荐用min和max来表示（包含）极限"></a>推荐用min和max来表示（包含）极限</h4><p>命名极限最清楚的方式是在要限制的东西前加上max<em>或者min</em>。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">MAX_ITEMS_IN_CART = <span class="number">10</span></span><br><span class="line"><span class="keyword">if</span> shopping_cart.num_items() &gt; MAX_ITEMS_IN_CART:</span><br><span class="line">    Error(<span class="string">"Too many items in cart."</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="推荐用first和last来表示包含的范围"><a href="#推荐用first和last来表示包含的范围" class="headerlink" title="推荐用first和last来表示包含的范围"></a>推荐用first和last来表示包含的范围</h4><div align="center">
+    <img src="/2018/10/04/编写可读代码的艺术/QQ20181006-093536@2x.png" width="400">
+</div>
+
+<h4 id="推荐使用begin和end来表示包含-排除范围"><a href="#推荐使用begin和end来表示包含-排除范围" class="headerlink" title="推荐使用begin和end来表示包含/排除范围"></a>推荐使用begin和end来表示包含/排除范围</h4><div align="center">
+    <img src="/2018/10/04/编写可读代码的艺术/QQ20181006-093633@2x.png" width="400">
+</div>
+
+<h4 id="给布尔值命名"><a href="#给布尔值命名" class="headerlink" title="给布尔值命名"></a>给布尔值命名</h4><blockquote>
+<p>当为布尔变量或者返回布尔值的函数选择名字时，要确保返回true和false的意义很明确。<br>通常来讲，加上像is、has、can或should这样的词，可以把布尔值变得更明确。<br>最好避免使用反义名字。例如，不要用：<code>bool disable_ssl = false;</code>，而更简单易读的表示方式是：<code>bool use_ssl = true;</code></p>
+</blockquote>
+<h4 id="与使用者的期望相匹配"><a href="#与使用者的期望相匹配" class="headerlink" title="与使用者的期望相匹配"></a>与使用者的期望相匹配</h4><p>有些名字之所以会让人误解是因为用户对它们的含义有先入为主的印象，就算你的本意并非如此。这种情况下，最好放弃这个名字而改用一个不会让人误解的名字。</p>
+<blockquote>
+<p>例子：get*()<br>例子：list::size()<br>例子：如何权衡多个备选名字</p>
+</blockquote>
+<h3 id="审美"><a href="#审美" class="headerlink" title="审美"></a>审美</h3><blockquote>
+<p>好的源代码应当“看上去养眼”。</p>
+</blockquote>
+<ul>
+<li>使用一致的布局，让读者很快就习惯这种风格。</li>
+</ul>
+<ul>
+<li>让相似的代码看上去相似。</li>
+</ul>
+<ul>
+<li>把相关的代码行分组，形成代码块。</li>
+</ul>
+<h4 id="为什么审美这么重要"><a href="#为什么审美这么重要" class="headerlink" title="为什么审美这么重要"></a>为什么审美这么重要</h4><p>使用从审美角度讲让人愉悦的代码更容易。<br>试想一下，你编程的大部分时间都花在看代码上！浏览代码的速度越快，人们就越容易使用它。</p>
+<h4 id="重新安排换行来保持一致和紧凑"><a href="#重新安排换行来保持一致和紧凑" class="headerlink" title="重新安排换行来保持一致和紧凑"></a>重新安排换行来保持一致和紧凑</h4><h4 id="用方法来整理不规则的东西"><a href="#用方法来整理不规则的东西" class="headerlink" title="用方法来整理不规则的东西"></a>用方法来整理不规则的东西</h4><ul>
+<li>消除了原来代码中大量的重复，让代码变得更紧凑；</li>
+</ul>
+<ul>
+<li>每个测试用例重要的部分变得很直白；</li>
+</ul>
+<ul>
+<li>添加新的测试更简单。</li>
+</ul>
+<h4 id="在需要时使用列对齐"><a href="#在需要时使用列对齐" class="headerlink" title="在需要时使用列对齐"></a>在需要时使用列对齐</h4><h4 id="选一个有意义的顺序，始终一致地使用它"><a href="#选一个有意义的顺序，始终一致地使用它" class="headerlink" title="选一个有意义的顺序，始终一致地使用它"></a>选一个有意义的顺序，始终一致地使用它</h4><ul>
+<li>从“最重要”到“最不重要”排序；</li>
+</ul>
+<ul>
+<li>按字母顺序排序。</li>
+</ul>
+<h4 id="把声明按块组织起来"><a href="#把声明按块组织起来" class="headerlink" title="把声明按块组织起来"></a>把声明按块组织起来</h4><h4 id="把代码分成“段落”"><a href="#把代码分成“段落”" class="headerlink" title="把代码分成“段落”"></a>把代码分成“段落”</h4><ul>
+<li>它是一种把相似的想法放在一起并与其他想法分开的方法；</li>
+</ul>
+<ul>
+<li>它提供了可见的“脚印”，如果没有它，会很容易找不到你读到哪里了；</li>
+</ul>
+<ul>
+<li>它便于段落之间的导航。</li>
+</ul>
+<h4 id="个人风格与一致性"><a href="#个人风格与一致性" class="headerlink" title="个人风格与一致性"></a>个人风格与一致性</h4><p>一致的风格比“正确”的风格更重要。</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><blockquote>
+<p>如果多个代码块做相似的事情，尝试让它们有同样的剪影；<br>把代码按”列“对齐可以让代码更易浏览；<br>如果在一段代码中提到A、B和C，那么不要在另一段中说B、C和A。选择一个有意义的顺序，并始终用这样的顺序；<br>用空行来把大块代码分成逻辑上的“段落”。</p>
+</blockquote>
+<h3 id="该写什么样的注释"><a href="#该写什么样的注释" class="headerlink" title="该写什么样的注释"></a>该写什么样的注释</h3><p>注释的目的是尽量帮助读者了解得和作者一样多。</p>
+<h4 id="什么不需要注释"><a href="#什么不需要注释" class="headerlink" title="什么不需要注释"></a>什么不需要注释</h4><blockquote>
+<p>不要为那些从代码本身就能快速推断的事实写注释。</p>
+<p>不要为了注释而注释</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Find the Node in the given subtree, with the given name, using the given depth.</span></span><br><span class="line">Node* FindNodeInSubtree(Node* subtree, string name, int depth);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>不要给不好的名字加注释——应该把名字改好</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Enforce limits on the Reply as stated in the Request,</span></span><br><span class="line"><span class="comment">// such as the number of items returned, or total byte size, etc.</span></span><br><span class="line"><span class="keyword">void</span> CleanReply(Request request, Reply reply);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Make sure 'reply' meets the count/byte/etc. limits from the 'request'</span></span><br><span class="line"><span class="keyword">void</span> EnforceLimitsFromRequest(Request request, Reply reply);</span><br></pre></td></tr></table></figure>
+<p><strong>好代码 &gt; 坏代码 + 好注释</strong></p>
+<h4 id="记录你的思想"><a href="#记录你的思想" class="headerlink" title="记录你的思想"></a>记录你的思想</h4><blockquote>
+<p>加入“导演评论”<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这个类正在变得越来越乱</span></span><br><span class="line"><span class="comment">// 也许我们应该建立一个'ResourceNode'子类来帮助整理</span></span><br></pre></td></tr></table></figure></p>
+<p>为代码中的暇疵写注释<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// <span class="doctag">TODO:</span>采用更快算法</span></span><br><span class="line"><span class="comment">// TODO(dustin): 处理除JPEG以外的图像格式</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>标记</th>
+<th>通常的意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TODO：</td>
+<td>我还没有处理的事情</td>
+</tr>
+<tr>
+<td>FIXME：</td>
+<td>已知的无法运行的代码</td>
+</tr>
+<tr>
+<td>HACK：</td>
+<td>对一个问题不得不采用的比较粗糙的解决方案</td>
+</tr>
+<tr>
+<td>xxx：</td>
+<td>危险！这里有重要的问题</td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<p>给常量加注释</p>
+</blockquote>
+<h4 id="站在读者的角度"><a href="#站在读者的角度" class="headerlink" title="站在读者的角度"></a>站在读者的角度</h4><blockquote>
+<p>意料之中的提问</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Recorder</span> &#123;</span></span><br><span class="line">    <span class="built_in">vector</span> &lt;<span class="keyword">float</span>&gt; data;</span><br><span class="line">    ...</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Clear</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="built_in">vector</span> &lt;<span class="keyword">float</span>&gt;().swap(data); <span class="comment">// Huh? Whiy not just data.clear()?</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Force vector to relinquish its memory (look up "STL swap trick")</span></span><br><span class="line"><span class="built_in">vector</span> &lt;<span class="keyword">float</span>&gt;().swap(data);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>公布可能的陷阱</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 运行时间将达到 O(number_tags * average_tag_depth)，所以小心严重嵌套的输入。</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">FixBrokenHtml</span><span class="params">(html)</span>:</span></span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>“全局观”注释</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这个文件包含一些辅助函数，为我们的文件系统提供了更便利的接口</span></span><br><span class="line"><span class="comment">// 它处理了文件权限及其他基本的细节。</span></span><br></pre></td></tr></table></figure>
+<p>不要对于写庞大的正式文档这种想法不知所措。几句精心选择的话比什么都没有强。</p>
+<blockquote>
+<p>总结性注释</p>
+</blockquote>
+<p>可以做任何能帮助读者更容易理解代码的事。这可能也会包含对于“做什么”、“怎么做”或为什么“的注释。</p>
+<h4 id="最后的思考——克服“作者心理阻滞”"><a href="#最后的思考——克服“作者心理阻滞”" class="headerlink" title="最后的思考——克服“作者心理阻滞”"></a>最后的思考——克服“作者心理阻滞”</h4><p>写注释可以分为几个简单的步骤：</p>
+<ul>
+<li>不管你心里想什么，先把它写下来。</li>
+</ul>
+<ul>
+<li>读一下这段注释，看看有没有什么地方可以改进。</li>
+</ul>
+<ul>
+<li>不断改进。</li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2018/10/04/编写可读代码的艺术/">编写可读代码的艺术</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">morven</a></p>
+        <p><span>发布时间:</span>2018-10-04, 22:23:03</p>
+        <p><span>最后更新:</span>2018-10-14, 22:05:10</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2018/10/04/编写可读代码的艺术/" title="编写可读代码的艺术">http://yoursite.com/2018/10/04/编写可读代码的艺术/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/10/04/编写可读代码的艺术/　　作者: morven" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2018/10/02/常用算法学习/">
+                    常用算法学习
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#代码应当易于理解"><span class="toc-number">1.</span> <span class="toc-text">代码应当易于理解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#是什么让代码变得“更好”"><span class="toc-number">1.1.</span> <span class="toc-text">是什么让代码变得“更好”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可读性基本定理"><span class="toc-number">1.2.</span> <span class="toc-text">可读性基本定理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总是越小越好吗"><span class="toc-number">1.3.</span> <span class="toc-text">总是越小越好吗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#理解代码所需的时间是否与其他目标有冲突"><span class="toc-number">1.4.</span> <span class="toc-text">理解代码所需的时间是否与其他目标有冲突</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#表面层次的改进"><span class="toc-number">2.</span> <span class="toc-text">表面层次的改进</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#把信息装到名字里"><span class="toc-number">2.1.</span> <span class="toc-text">把信息装到名字里</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#选择专业的词"><span class="toc-number">2.1.1.</span> <span class="toc-text">选择专业的词</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#找到更有表现力的词"><span class="toc-number">2.1.2.</span> <span class="toc-text">找到更有表现力的词</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#避免像tmp和retval这样泛泛的名字"><span class="toc-number">2.1.3.</span> <span class="toc-text">避免像tmp和retval这样泛泛的名字</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#循环迭代器"><span class="toc-number">2.1.4.</span> <span class="toc-text">循环迭代器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#对于空泛名字的裁定"><span class="toc-number">2.1.5.</span> <span class="toc-text">对于空泛名字的裁定</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#用具体的名字代替抽象的名字"><span class="toc-number">2.1.6.</span> <span class="toc-text">用具体的名字代替抽象的名字</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#为名字附带更多信息"><span class="toc-number">2.1.7.</span> <span class="toc-text">为名字附带更多信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#名字应该有多长"><span class="toc-number">2.1.8.</span> <span class="toc-text">名字应该有多长</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#利用名字的格式来传递含义"><span class="toc-number">2.1.9.</span> <span class="toc-text">利用名字的格式来传递含义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#其他格式规范"><span class="toc-number">2.1.10.</span> <span class="toc-text">其他格式规范</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#不会误解的名字"><span class="toc-number">2.2.</span> <span class="toc-text">不会误解的名字</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#推荐用min和max来表示（包含）极限"><span class="toc-number">2.2.1.</span> <span class="toc-text">推荐用min和max来表示（包含）极限</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#推荐用first和last来表示包含的范围"><span class="toc-number">2.2.2.</span> <span class="toc-text">推荐用first和last来表示包含的范围</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#推荐使用begin和end来表示包含-排除范围"><span class="toc-number">2.2.3.</span> <span class="toc-text">推荐使用begin和end来表示包含/排除范围</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#给布尔值命名"><span class="toc-number">2.2.4.</span> <span class="toc-text">给布尔值命名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#与使用者的期望相匹配"><span class="toc-number">2.2.5.</span> <span class="toc-text">与使用者的期望相匹配</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#审美"><span class="toc-number">2.3.</span> <span class="toc-text">审美</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#为什么审美这么重要"><span class="toc-number">2.3.1.</span> <span class="toc-text">为什么审美这么重要</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#重新安排换行来保持一致和紧凑"><span class="toc-number">2.3.2.</span> <span class="toc-text">重新安排换行来保持一致和紧凑</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#用方法来整理不规则的东西"><span class="toc-number">2.3.3.</span> <span class="toc-text">用方法来整理不规则的东西</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#在需要时使用列对齐"><span class="toc-number">2.3.4.</span> <span class="toc-text">在需要时使用列对齐</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#选一个有意义的顺序，始终一致地使用它"><span class="toc-number">2.3.5.</span> <span class="toc-text">选一个有意义的顺序，始终一致地使用它</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#把声明按块组织起来"><span class="toc-number">2.3.6.</span> <span class="toc-text">把声明按块组织起来</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#把代码分成“段落”"><span class="toc-number">2.3.7.</span> <span class="toc-text">把代码分成“段落”</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#个人风格与一致性"><span class="toc-number">2.3.8.</span> <span class="toc-text">个人风格与一致性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#总结"><span class="toc-number">2.3.9.</span> <span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#该写什么样的注释"><span class="toc-number">2.4.</span> <span class="toc-text">该写什么样的注释</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#什么不需要注释"><span class="toc-number">2.4.1.</span> <span class="toc-text">什么不需要注释</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#记录你的思想"><span class="toc-number">2.4.2.</span> <span class="toc-text">记录你的思想</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#站在读者的角度"><span class="toc-number">2.4.3.</span> <span class="toc-text">站在读者的角度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#最后的思考——克服“作者心理阻滞”"><span class="toc-number">2.4.4.</span> <span class="toc-text">最后的思考——克服“作者心理阻滞”</span></a></li></ol></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"编写可读代码的艺术　| Morvenyang2018　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2018/10/02/常用算法学习/" title="下一篇: 常用算法学习">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/10/04/编写可读代码的艺术/">编写可读代码的艺术</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/02/常用算法学习/">常用算法学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/09/结构思考力/">结构思考力</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/08/软件架构/">软件架构原理</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/02/大数据笔记/">大数据笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/02/C语言笔记/">C语言笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/30/数学笔记/">数学笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/25/动手学深度学习第一课：从上手到多类分类/">《动手学深度学习》笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/24/TensorFlow/">TensorFlow机器学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/19/编写高质量Objective-C/">《编写高质量Objective-C》笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/18/白话区块链/">《白话区块链》笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/18/广告程序化/">《程序化广告实战》笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/17/markDownd公式/">MarkDownd中数学公式整理</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/17/hello-world/">Hello World</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2018 morven
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 6;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>

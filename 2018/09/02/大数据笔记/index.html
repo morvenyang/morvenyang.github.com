@@ -23,10 +23,15 @@
 <meta property="og:site_name" content="Morvenyang2018">
 <meta property="og:description" content="《大数据架构商业之路——从业务需求到技术方案》数据收集1. 互联网数据收集 网络爬虫主要的工作流程是从一个或若干个初始网页的地址URL开始，获得初始网页上的URL列表。然后在抓取网页的过程中，不断地从当前页面上抽取新的URL放入待爬行队列，直到满足系统的停止条件为止。  如何有效地获取新的URL，对于爬虫执行成功与否非常关键，从这个角度可以将网页获取的策略分为几个大类：深度优先、宽度优先和最佳优先">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-02T23:37:04.058Z">
+<meta property="og:image" content="http://yoursite.com/2018/09/02/大数据笔记/QQ20181005-150152@2x.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/02/大数据笔记/QQ20181005-154121@2x.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/02/大数据笔记/QQ20181005-154306@2x.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/02/大数据笔记/QQ20181005-155546@2x.png">
+<meta property="og:updated_time" content="2018-10-05T07:56:22.865Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="大数据笔记">
 <meta name="twitter:description" content="《大数据架构商业之路——从业务需求到技术方案》数据收集1. 互联网数据收集 网络爬虫主要的工作流程是从一个或若干个初始网页的地址URL开始，获得初始网页上的URL列表。然后在抓取网页的过程中，不断地从当前页面上抽取新的URL放入待爬行队列，直到满足系统的停止条件为止。  如何有效地获取新的URL，对于爬虫执行成功与否非常关键，从这个角度可以将网页获取的策略分为几个大类：深度优先、宽度优先和最佳优先">
+<meta name="twitter:image" content="http://yoursite.com/2018/09/02/大数据笔记/QQ20181005-150152@2x.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -302,6 +307,78 @@
 <li>网络爬虫<br>主要的工作流程是从一个或若干个初始网页的地址URL开始，获得初始网页上的URL列表。然后在抓取网页的过程中，不断地从当前页面上抽取新的URL放入待爬行队列，直到满足系统的停止条件为止。</li>
 </ul>
 <p>如何有效地获取新的URL，对于爬虫执行成功与否非常关键，从这个角度可以将网页获取的策略分为几个大类：深度优先、宽度优先和最佳优先三种。</p>
+<blockquote>
+<p>PageRank算法：在随机访问的过程中，越是被频繁访问对链接越重要。</p>
+<p>HITS算法：将每张网页节点的值分为两个，包括权威值(authority)和中心值(hub)。</p>
+</blockquote>
+<div align="center">
+    <img src="/2018/09/02/大数据笔记/QQ20181005-150152@2x.png" width="400">
+    <center><font color="grey">爬虫的基本架构和工作流程</font></center>
+</div>
+
+<p>对于创业公司而言，利用现有对外部资源是飞速发展的捷径。因此，网络爬虫将被广泛地运用在互联网世界的数据获取上。例如，对于O2O电商创业而言，可以让爬虫获取某些地区的气候数据，以便于之后做基于天气预报的个性化推荐和精准营销。此外，爬虫还可以从主流电商网站爬取其商品目录结构，以及最新的市场价格，等等。</p>
+<h4 id="2-Apache-Nutch简介"><a href="#2-Apache-Nutch简介" class="headerlink" title="2. Apache Nutch简介"></a>2. Apache Nutch简介</h4><p>它是一个开源的、基于Java编程语言实现的搜索引擎，诞生于2002年8月。<br>在Nutch的进化过程中，还衍生了Hadoop、Tika、Gora和Crawler Commons四个重量级的Java开源项目。</p>
+<p>Nutch不仅仅是一个爬虫系统，它还提供了运行搜索引擎所需的主要工具，包括全文索引和搜索。</p>
+<p>主要组成部分为爬虫(Crawler)、索引器(Indexer)和查询器(Searcher)。</p>
+<p>数据文件主要包括三类，分别是网络数据库(Web Database)、分段(Segment)和索引(Index)</p>
+<h4 id="3-Heritrix简介"><a href="#3-Heritrix简介" class="headerlink" title="3. Heritrix简介"></a>3. Heritrix简介</h4><p>Heritrix也是一个开源的、使用Java编程语言开发的网络爬虫，始于2003年年初，最初用于对网上的资源进行归档，建立网络数字图书馆。</p>
+<p>爬虫主要通过可视化的Web用户界面启动、监控和调整，允许弹性地定义要获取的网页链接，可扩展性良好，方便用户实现自己的抓取逻辑。</p>
+<p>Heritrix主要有以下组件：</p>
+<ul>
+<li>爬取范围</li>
+</ul>
+<ul>
+<li>边界开拓</li>
+</ul>
+<ul>
+<li>处理器链</li>
+</ul>
+<ul>
+<li>预取器</li>
+</ul>
+<ul>
+<li>获取器</li>
+</ul>
+<ul>
+<li>抽取器</li>
+</ul>
+<ul>
+<li>写入器</li>
+</ul>
+<ul>
+<li>后处理器</li>
+</ul>
+<ul>
+<li>爬虫命令处理</li>
+</ul>
+<ul>
+<li>服务器缓存(Servercache)</li>
+</ul>
+<h3 id="内部数据收集"><a href="#内部数据收集" class="headerlink" title="内部数据收集"></a>内部数据收集</h3><p>内部数据的收集主要分为推送(Push)和拉取(Pull)两大类。</p>
+<div align="center">
+    <img src="/2018/09/02/大数据笔记/QQ20181005-154121@2x.png" width="400">
+    <center><font color="grey">推送的收集方式</font></center>
+</div>
+
+<div align="center">
+    <img src="/2018/09/02/大数据笔记/QQ20181005-154306@2x.png" width="400">
+    <center><font color="grey">拉取的收集方式</font></center>
+</div>
+
+
+<h4 id="1-Apache-Flume简介"><a href="#1-Apache-Flume简介" class="headerlink" title="1. Apache Flume简介"></a>1. Apache Flume简介</h4><p>Flume(<a href="http://flume.apache.org/)是一个分布式、可靠和高可用的海量数据收集系统。它同时采用推送和拉取两种采集模式，其能力受到了业界的认可与广泛应用。" target="_blank" rel="noopener">http://flume.apache.org/)是一个分布式、可靠和高可用的海量数据收集系统。它同时采用推送和拉取两种采集模式，其能力受到了业界的认可与广泛应用。</a></p>
+<p>Flume的核心模块有三个：</p>
+<blockquote>
+<p>源头(Source)：负责接收数据的模块，它定义了数据的源头，从源头收集数据，传递给通道。</p>
+<p>沉淀器(Sink)：批量地从通道读取并移除数据，并将所读取的内容存储到指定的位置。</p>
+<p>通道(Channel)：作为一个管道或队列，连接源头和沉淀器。</p>
+</blockquote>
+<div align="center">
+    <img src="/2018/09/02/大数据笔记/QQ20181005-155546@2x.png" width="400">
+    <center><font color="grey">Flume工作的基本流程</font></center>
+</div>
+
+
 
       
     </div>
@@ -313,7 +390,7 @@
         <p><span>本文标题:</span><a href="/2018/09/02/大数据笔记/">大数据笔记</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">morven</a></p>
         <p><span>发布时间:</span>2018-09-02, 10:56:49</p>
-        <p><span>最后更新:</span>2018-09-03, 07:37:04</p>
+        <p><span>最后更新:</span>2018-10-05, 15:56:22</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/09/02/大数据笔记/" title="大数据笔记">http://yoursite.com/2018/09/02/大数据笔记/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/09/02/大数据笔记/　　作者: morven" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -349,7 +426,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#《大数据架构商业之路——从业务需求到技术方案》"><span class="toc-number">1.</span> <span class="toc-text">《大数据架构商业之路——从业务需求到技术方案》</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#数据收集"><span class="toc-number">1.1.</span> <span class="toc-text">数据收集</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-互联网数据收集"><span class="toc-number">1.1.1.</span> <span class="toc-text">1. 互联网数据收集</span></a></li></ol></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#《大数据架构商业之路——从业务需求到技术方案》"><span class="toc-number">1.</span> <span class="toc-text">《大数据架构商业之路——从业务需求到技术方案》</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#数据收集"><span class="toc-number">1.1.</span> <span class="toc-text">数据收集</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-互联网数据收集"><span class="toc-number">1.1.1.</span> <span class="toc-text">1. 互联网数据收集</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-Apache-Nutch简介"><span class="toc-number">1.1.2.</span> <span class="toc-text">2. Apache Nutch简介</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-Heritrix简介"><span class="toc-number">1.1.3.</span> <span class="toc-text">3. Heritrix简介</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#内部数据收集"><span class="toc-number">1.2.</span> <span class="toc-text">内部数据收集</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Apache-Flume简介"><span class="toc-number">1.2.1.</span> <span class="toc-text">1. Apache Flume简介</span></a></li></ol></li></ol></li></ol>
         
     </div>
     <style>
@@ -419,7 +496,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/09/09/结构思考力/">结构思考力</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/08/软件架构/">软件架构原理</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/02/大数据笔记/">大数据笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/02/C语言笔记/">C语言笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/30/数学笔记/">数学笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/25/动手学深度学习第一课：从上手到多类分类/">《动手学深度学习》笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/24/TensorFlow/">TensorFlow机器学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/19/编写高质量Objective-C/">《编写高质量Objective-C》笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/18/白话区块链/">《白话区块链》笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/18/广告程序化/">《程序化广告实战》笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/17/markDownd公式/">MarkDownd中数学公式整理</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/17/hello-world/">Hello World</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/10/04/编写可读代码的艺术/">编写可读代码的艺术</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/02/常用算法学习/">常用算法学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/09/结构思考力/">结构思考力</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/08/软件架构/">软件架构原理</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/02/大数据笔记/">大数据笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/02/C语言笔记/">C语言笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/30/数学笔记/">数学笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/25/动手学深度学习第一课：从上手到多类分类/">《动手学深度学习》笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/24/TensorFlow/">TensorFlow机器学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/19/编写高质量Objective-C/">《编写高质量Objective-C》笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/18/白话区块链/">《白话区块链》笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/18/广告程序化/">《程序化广告实战》笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/17/markDownd公式/">MarkDownd中数学公式整理</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/17/hello-world/">Hello World</a></li></ul>
 
 
 
